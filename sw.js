@@ -1,4 +1,4 @@
-const CACHE_NAME='liudao-v1';
+const CACHE_NAME='liudao-v2';
 const URLS=['./index.html','./manifest.json'];
 self.addEventListener('install',e=>{
   e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(URLS)));
