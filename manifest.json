@@ -1,0 +1,18 @@
+{
+  "name": "六道轮回·领奖助手",
+  "short_name": "六道领奖",
+  "description": "六道轮回批量领奖管理工具",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#1a1a2e",
+  "theme_color": "#e94560",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='80' fill='%231a1a2e'/><text x='256' y='380' font-size='300' text-anchor='middle' fill='%23e94560'>六</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
