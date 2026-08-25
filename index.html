@@ -9,100 +9,135 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="六道领奖">
-<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='80' fill='%231a1a2e'/><text x='256' y='380' font-size='300' text-anchor='middle' fill='%23e94560'>六</text></svg>">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#1a1a2e;--card:#16213e;--card-hover:#0f3460;--accent:#e94560;--green:#00d672;--yellow:#ffc107;--red:#ff5252;--text:#e0e0e0;--text2:#a0a0a0;--water:#4fc3f7;--fire:#ff7043;--wind:#81c784;--earth:#a1887f;--radius:12px}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
-.header{position:sticky;top:0;z-index:100;background:linear-gradient(135deg,#1a1a2e,#16213e);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(233,69,96,.3);backdrop-filter:blur(10px)}
-.header h1{font-size:18px;background:linear-gradient(90deg,var(--accent),#ff8a80);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
-.header-actions{display:flex;gap:8px}
-.btn{padding:8px 14px;border:none;border-radius:8px;font-size:13px;cursor:pointer;transition:all .2s;font-weight:600}
+:root{--bg:#1a1a2e;--card:#16213e;--accent:#e94560;--green:#00d672;--yellow:#ffc107;--red:#ff5252;--text:#e0e0e0;--text2:#a0a0a0;--water:#4fc3f7;--fire:#ff7043;--wind:#81c784;--earth:#a1887f;--radius:12px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;padding-bottom:80px}
+.header{position:sticky;top:0;z-index:100;background:linear-gradient(135deg,#1a1a2e,#16213e);padding:10px 12px;border-bottom:1px solid rgba(233,69,96,.3);backdrop-filter:blur(10px)}
+.header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.header h1{font-size:16px;background:linear-gradient(90deg,var(--accent),#ff8a80);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
+.header-actions{display:flex;gap:6px}
+.search-bar{display:flex;gap:6px;margin-bottom:6px}
+.search-bar input{flex:1;padding:7px 12px;border:1px solid rgba(255,255,255,.15);border-radius:8px;background:rgba(255,255,255,.05);color:var(--text);font-size:13px;outline:none}
+.search-bar input:focus{border-color:var(--accent)}
+.search-bar input::placeholder{color:var(--text2)}
+.toolbar{display:flex;gap:6px;flex-wrap:wrap}
+.btn{padding:6px 12px;border:none;border-radius:8px;font-size:12px;cursor:pointer;transition:all .2s;font-weight:600;white-space:nowrap}
 .btn-primary{background:var(--accent);color:#fff}
-.btn-primary:hover{background:#c73652;transform:scale(1.05)}
+.btn-primary:hover{background:#c73652}
 .btn-secondary{background:rgba(255,255,255,.1);color:var(--text)}
 .btn-secondary:hover{background:rgba(255,255,255,.2)}
-.btn-sm{padding:6px 10px;font-size:12px}
 .btn-green{background:var(--green);color:#1a1a2e}
-.btn-green:hover{background:#00b862}
-.group-nav{display:flex;align-items:center;justify-content:center;padding:12px 16px;gap:16px}
-.group-nav button{width:36px;height:36px;border-radius:50%;border:2px solid var(--accent);background:transparent;color:var(--accent);font-size:18px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.btn-sm{padding:5px 8px;font-size:11px}
+.btn-icon{width:32px;height:32px;padding:0;display:flex;align-items:center;justify-content:center;font-size:16px}
+select.tool-select{padding:6px 8px;border:1px solid rgba(255,255,255,.15);border-radius:8px;background:rgba(255,255,255,.08);color:var(--text);font-size:12px;outline:none;appearance:none;cursor:pointer}
+.stats-bar{display:flex;justify-content:center;gap:16px;padding:6px 12px;font-size:11px;color:var(--text2)}
+.stats-bar span b{color:var(--text)}
+.group-nav{display:flex;align-items:center;justify-content:center;padding:8px 12px;gap:12px}
+.group-nav button{width:32px;height:32px;border-radius:50%;border:2px solid var(--accent);background:transparent;color:var(--accent);font-size:16px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
 .group-nav button:hover{background:var(--accent);color:#fff}
 .group-nav button:disabled{opacity:.3;cursor:not-allowed}
-.group-title{font-size:16px;font-weight:700;min-width:120px;text-align:center}
-.group-title span{color:var(--text2);font-size:12px;font-weight:400}
-.cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px 16px;max-width:600px;margin:0 auto}
-.account-card{background:var(--card);border-radius:var(--radius);padding:14px;position:relative;transition:all .2s;border:2px solid transparent;overflow:hidden}
-.account-card.status-claim{border-color:var(--green);box-shadow:0 0 15px rgba(0,214,114,.2)}
+.group-title{font-size:15px;font-weight:700;min-width:100px;text-align:center}
+.group-title span{color:var(--text2);font-size:11px;font-weight:400}
+.group-manage{display:flex;justify-content:center;gap:6px;padding:2px 12px 6px}
+.group-dots{display:flex;justify-content:center;flex-wrap:wrap;gap:3px;padding:2px 12px 6px;max-width:600px;margin:0 auto}
+.group-dot{width:8px;height:8px;border-radius:50%;cursor:pointer;transition:all .2s;border:1px solid rgba(255,255,255,.2)}
+.group-dot.active{border-color:var(--accent);transform:scale(1.4)}
+.group-dot.has-claim{background:var(--green)}
+.group-dot.has-over{background:var(--red)}
+.group-dot.all-wait{background:var(--yellow)}
+.group-dot.empty{background:rgba(255,255,255,.1)}
+.cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:8px 12px;max-width:600px;margin:0 auto}
+.account-card{background:var(--card);border-radius:var(--radius);padding:12px;position:relative;transition:all .2s;border:2px solid transparent;overflow:hidden}
+.account-card.status-claim{border-color:var(--green);box-shadow:0 0 12px rgba(0,214,114,.2)}
 .account-card.status-wait{border-color:var(--yellow)}
-.account-card.status-over{border-color:var(--red);box-shadow:0 0 15px rgba(255,82,82,.2)}
-.card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.card-phone{font-size:14px;font-weight:700}
-.card-actions{display:flex;gap:4px}
-.card-actions button{width:24px;height:24px;border-radius:6px;border:none;background:rgba(255,255,255,.1);color:var(--text2);font-size:11px;cursor:pointer;transition:all .2s}
+.account-card.status-over{border-color:var(--red);box-shadow:0 0 12px rgba(255,82,82,.2);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.85}}
+.card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.card-phone{font-size:13px;font-weight:700;cursor:pointer;transition:color .2s}
+.card-phone:hover{color:var(--accent)}
+.card-phone:active{color:var(--green)}
+.card-actions{display:flex;gap:3px}
+.card-actions button{width:22px;height:22px;border-radius:6px;border:none;background:rgba(255,255,255,.1);color:var(--text2);font-size:10px;cursor:pointer;transition:all .2s}
 .card-actions button:hover{background:rgba(255,255,255,.2);color:var(--text)}
-.card-ninja{font-size:13px;margin-bottom:6px;display:flex;align-items:center;gap:6px}
-.faction-badge{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;font-weight:700;color:#1a1a2e}
-.faction-water{background:var(--water)}
-.faction-fire{background:var(--fire)}
-.faction-wind{background:var(--wind)}
-.faction-earth{background:var(--earth)}
-.card-stars{font-size:12px;color:var(--text2);margin-bottom:4px;line-height:1.6}
-.card-stars span{margin-right:8px}
-.star3{color:#cd7f32}
-.star4{color:#c0c0c0}
-.star5{color:#ffd700}
-.card-frag{font-size:12px;color:var(--text2);margin-bottom:6px}
-.card-silver{font-size:13px;font-weight:600;color:#ffc107;margin-bottom:8px}
-.card-timer{font-size:22px;font-weight:700;text-align:center;padding:6px 0;border-radius:8px;margin-top:4px}
+.card-ninja{font-size:12px;margin-bottom:4px;display:flex;align-items:center;gap:5px}
+.faction-badge{display:inline-block;padding:1px 6px;border-radius:8px;font-size:10px;font-weight:700;color:#1a1a2e}
+.faction-water{background:var(--water)}.faction-fire{background:var(--fire)}.faction-wind{background:var(--wind)}.faction-earth{background:var(--earth)}
+.card-stars{font-size:11px;color:var(--text2);margin-bottom:3px;line-height:1.5}
+.card-stars span{margin-right:6px}
+.star3{color:#cd7f32}.star4{color:#c0c0c0}.star5{color:#ffd700}
+.card-frag{font-size:11px;color:var(--text2);margin-bottom:3px}
+.card-silver{font-size:12px;font-weight:600;color:#ffc107;margin-bottom:4px}
+.card-note{font-size:10px;color:var(--text2);margin-bottom:4px;font-style:italic;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card-timer{font-size:20px;font-weight:700;text-align:center;padding:4px 0;border-radius:6px;margin-top:2px}
 .timer-claim{color:var(--green);background:rgba(0,214,114,.1)}
 .timer-wait{color:var(--yellow);background:rgba(255,193,7,.08)}
 .timer-over{color:var(--red);background:rgba(255,82,82,.1)}
-.card-claim-btn{width:100%;margin-top:8px;padding:8px;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s}
+.card-claim-btn{width:100%;margin-top:6px;padding:6px;border:none;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s}
 .card-claim-btn.claimable{background:var(--green);color:#1a1a2e}
 .card-claim-btn.claimable:hover{background:#00b862}
 .card-claim-btn.waiting{background:rgba(255,255,255,.05);color:var(--text2);cursor:default}
 .status-over .card-claim-btn.claimable{background:var(--red);color:#fff}
 .status-over .card-claim-btn.claimable:hover{background:#e04040}
-.group-claim-all{display:block;margin:12px auto;padding:12px 32px;border:none;border-radius:10px;background:linear-gradient(135deg,var(--accent),#ff8a80);color:#fff;font-size:15px;font-weight:700;cursor:pointer;transition:all .2s}
+.group-claim-all{display:block;margin:10px auto;padding:10px 28px;border:none;border-radius:10px;background:linear-gradient(135deg,var(--accent),#ff8a80);color:#fff;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s}
 .group-claim-all:hover{transform:scale(1.05);box-shadow:0 4px 20px rgba(233,69,96,.4)}
-.empty-card{background:var(--card);border-radius:var(--radius);border:2px dashed rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;min-height:160px;cursor:pointer;transition:all .2s;color:var(--text2);font-size:14px}
+.empty-card{background:var(--card);border-radius:var(--radius);border:2px dashed rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;min-height:140px;cursor:pointer;transition:all .2s;color:var(--text2);font-size:13px}
 .empty-card:hover{border-color:var(--accent);color:var(--accent)}
-.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.7);z-index:200;display:none;align-items:center;justify-content:center;padding:16px}
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.7);z-index:200;display:none;align-items:flex-start;justify-content:center;padding:20px 12px;overflow-y:auto}
 .modal-overlay.active{display:flex}
-.modal{background:var(--card);border-radius:16px;padding:24px;width:100%;max-width:400px;max-height:90vh;overflow-y:auto;border:1px solid rgba(233,69,96,.3)}
-.modal h2{font-size:18px;margin-bottom:16px;color:var(--accent)}
-.form-group{margin-bottom:14px}
-.form-group label{display:block;font-size:13px;color:var(--text2);margin-bottom:4px}
-.form-group input,.form-group select{width:100%;padding:10px 12px;border:1px solid rgba(255,255,255,.15);border-radius:8px;background:rgba(255,255,255,.05);color:var(--text);font-size:14px;outline:none;transition:border-color .2s}
-.form-group input:focus,.form-group select:focus{border-color:var(--accent)}
-.form-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a0a0a0' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
-.star-inputs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.modal{background:var(--card);border-radius:16px;padding:20px;width:100%;max-width:400px;margin:20px auto;border:1px solid rgba(233,69,96,.3)}
+.modal h2{font-size:16px;margin-bottom:14px;color:var(--accent)}
+.form-group{margin-bottom:12px}
+.form-group label{display:block;font-size:12px;color:var(--text2);margin-bottom:3px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:8px 10px;border:1px solid rgba(255,255,255,.15);border-radius:8px;background:rgba(255,255,255,.05);color:var(--text);font-size:13px;outline:none;transition:border-color .2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent)}
+.form-group textarea{resize:vertical;min-height:100px;font-family:monospace}
+.form-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a0a0a0' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.star-inputs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
 .star-inputs .form-group{margin-bottom:0}
-.modal-actions{display:flex;gap:10px;margin-top:20px}
-.modal-actions .btn{flex:1;padding:12px}
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--green);color:#1a1a2e;padding:12px 24px;border-radius:10px;font-weight:700;font-size:14px;z-index:300;opacity:0;transition:opacity .3s;pointer-events:none}
+.modal-actions{display:flex;gap:8px;margin-top:16px}
+.modal-actions .btn{flex:1;padding:10px}
+.toast{position:fixed;bottom:70px;left:50%;transform:translateX(-50%);background:var(--green);color:#1a1a2e;padding:10px 20px;border-radius:10px;font-weight:700;font-size:13px;z-index:300;opacity:0;transition:opacity .3s;pointer-events:none}
 .toast.show{opacity:1}
-.stats-bar{display:flex;justify-content:center;gap:20px;padding:8px 16px;font-size:12px;color:var(--text2)}
-.stats-bar span b{color:var(--text)}
-.group-manage{display:flex;justify-content:center;gap:8px;padding:4px 16px 8px}
-.group-dots{display:flex;justify-content:center;flex-wrap:wrap;gap:4px;padding:4px 16px 8px;max-width:600px;margin:0 auto}
-.group-dot{width:10px;height:10px;border-radius:50%;cursor:pointer;transition:all .2s;border:1px solid rgba(255,255,255,.2)}
-.group-dot.active{border-color:var(--accent);transform:scale(1.3)}
-.group-dot.has-claim{background:var(--green)}
-.group-dot.has-over{background:var(--red)}
-.group-dot.all-wait{background:var(--yellow)}
-.group-dot.empty{background:rgba(255,255,255,.1)}
-@media(max-width:360px){.cards-grid{grid-template-columns:1fr;gap:10px;padding:10px 12px}.card-timer{font-size:18px}}
+.stats-panel{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(135deg,#1a1a2e,#16213e);border-top:1px solid rgba(233,69,96,.3);padding:12px 16px;z-index:150;transform:translateY(100%);transition:transform .3s;max-height:60vh;overflow-y:auto}
+.stats-panel.open{transform:translateY(0)}
+.stats-panel h3{font-size:14px;color:var(--accent);margin-bottom:10px}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.stat-item{background:rgba(255,255,255,.05);border-radius:8px;padding:10px;text-align:center}
+.stat-item .stat-val{font-size:20px;font-weight:700;color:var(--accent)}
+.stat-item .stat-label{font-size:11px;color:var(--text2);margin-top:2px}
+.history-list{max-height:200px;overflow-y:auto;margin-top:8px}
+.history-item{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:12px}
+.sound-toggle{position:fixed;bottom:12px;right:12px;width:40px;height:40px;border-radius:50%;border:2px solid var(--accent);background:var(--card);color:var(--accent);font-size:18px;cursor:pointer;z-index:100;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.sound-toggle.on{background:var(--accent);color:#fff}
+.sound-toggle.on:hover{background:#c73652}
+@media(max-width:360px){.cards-grid{grid-template-columns:1fr;gap:8px}.card-timer{font-size:18px}}
 </style>
 </head>
 <body>
 <div class="header">
-  <h1>六道轮回·领奖助手</h1>
-  <div class="header-actions">
-    <button class="btn btn-secondary btn-sm" onclick="exportData()">导出</button>
-    <button class="btn btn-secondary btn-sm" onclick="importData()">导入</button>
-    <button class="btn btn-primary btn-sm" onclick="openAddModal()">+ 添加</button>
+  <div class="header-top">
+    <h1>六道轮回·领奖助手</h1>
+    <div class="header-actions">
+      <button class="btn btn-secondary btn-sm" onclick="exportData()">导出</button>
+      <button class="btn btn-secondary btn-sm" onclick="importData()">导入</button>
+      <button class="btn btn-primary btn-sm" onclick="openAddModal()">+ 添加</button>
+    </div>
+  </div>
+  <div class="search-bar">
+    <input id="searchInput" placeholder="搜索手机号/忍者/备注..." oninput="render()">
+    <select class="tool-select" id="sortSelect" onchange="render()">
+      <option value="group">按分组</option>
+      <option value="timer-asc">倒计时↑</option>
+      <option value="timer-desc">倒计时↓</option>
+      <option value="silver">银锭↓</option>
+      <option value="faction">派系</option>
+    </select>
+  </div>
+  <div class="toolbar">
+    <button class="btn btn-secondary btn-sm" onclick="openBatchModal()">📋批量添加</button>
+    <button class="btn btn-secondary btn-sm" onclick="toggleStats()">📊统计</button>
+    <button class="btn btn-secondary btn-sm" onclick="openHistoryModal()">📜记录</button>
   </div>
 </div>
 <div class="stats-bar">
@@ -116,13 +151,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   <button onclick="nextGroup()" id="btnNext">▶</button>
 </div>
 <div class="group-manage">
-  <button class="btn btn-secondary btn-sm" onclick="renameGroup()">重命名组</button>
-  <button class="btn btn-secondary btn-sm" onclick="addGroup()">+ 新组</button>
+  <button class="btn btn-secondary btn-sm" onclick="renameGroup()">重命名</button>
+  <button class="btn btn-secondary btn-sm" onclick="addGroup()">+新组</button>
   <button class="btn btn-secondary btn-sm" onclick="deleteGroup()">删除组</button>
 </div>
 <div class="group-dots" id="groupDots"></div>
 <div class="cards-grid" id="cardsGrid"></div>
 <button class="group-claim-all" onclick="claimAll()">✓ 本组全部已领取</button>
+
+<!-- Add/Edit Modal -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <h2 id="modalTitle">添加账号</h2>
@@ -136,6 +173,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     <div class="form-group"><label>碎片数量</label><input id="fFrag" type="number" min="0" value="0"></div>
     <div class="form-group"><label>主流派系</label><select id="fFaction"><option value="water">💧水</option><option value="fire">🔥火</option><option value="wind">🌪风</option><option value="earth">🏔土</option></select></div>
     <div class="form-group"><label>每日银锭</label><input id="fSilver" type="number" min="0" value="0"></div>
+    <div class="form-group"><label>倒计时(小时)</label><input id="fTimer" type="number" min="1" max="72" value="24" step="1"></div>
+    <div class="form-group"><label>备注</label><input id="fNote" placeholder="如:主号、小号1..."></div>
     <div class="form-group"><label>加入分组</label><select id="fGroup"></select></div>
     <div class="modal-actions">
       <button class="btn btn-secondary" onclick="closeModal()">取消</button>
@@ -143,71 +182,103 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     </div>
   </div>
 </div>
+
+<!-- Batch Add Modal -->
+<div class="modal-overlay" id="batchOverlay">
+  <div class="modal">
+    <h2>批量添加</h2>
+    <div class="form-group"><label>每行一个账号，格式: 手机号,忍者,派系(水/火/风/土),银锭,备注</label><textarea id="batchText" placeholder="138****1234,鸣人,火,120,主号&#10;139****5678,佐助,火,80,小号1&#10;137****9012,我爱罗,风,200,"></textarea></div>
+    <div class="form-group"><label>加入分组</label><select id="batchGroup"></select></div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeBatchModal()">取消</button>
+      <button class="btn btn-primary" onclick="batchAdd()">添加</button>
+    </div>
+  </div>
+</div>
+
+<!-- History Modal -->
+<div class="modal-overlay" id="historyOverlay">
+  <div class="modal">
+    <h2>领取记录</h2>
+    <div id="historyContent"></div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeHistoryModal()">关闭</button>
+      <button class="btn btn-secondary" onclick="clearHistory()">清空记录</button>
+    </div>
+  </div>
+</div>
+
+<!-- Stats Panel -->
+<div class="stats-panel" id="statsPanel">
+  <h3>📊 统计面板 <button class="btn btn-secondary btn-sm" onclick="toggleStats()" style="float:right">关闭</button></h3>
+  <div class="stats-grid" id="statsGrid"></div>
+</div>
+
+<button class="sound-toggle" id="soundBtn" onclick="toggleSound()">🔔</button>
 <div class="toast" id="toast"></div>
 <input type="file" id="fileInput" accept=".json" style="display:none" onchange="handleImport(event)">
 <script>
 /* ===== DATA ===== */
-let data={groups:[],currentGroup:0};
+let data={groups:[],currentGroup:0,history:[]};
 const STORAGE_KEY='liudao_data';
-const MS24H=24*60*60*1000;
 const FACTION_MAP={water:'💧水',fire:'🔥火',wind:'🌪风',earth:'🏔土'};
+const FACTION_CN={水:'water',火:'fire',风:'wind',土:'earth'};
+let soundOn=true;
+let editId=null;
 
+function getTimerMs(acc){return (acc.timerHours||24)*3600000}
 function loadData(){
-  try{const s=localStorage.getItem(STORAGE_KEY);if(s)data=JSON.parse(s)}catch(e){}
-  if(!data.groups.length){data.groups=[{id:gId(),name:'第1组',accounts:[]}];data.currentGroup=0}
-  saveData();
+  try{const s=localStorage.getItem(STORAGE_KEY);if(s){data=JSON.parse(s);if(!data.history)data.history=[]}}catch(e){}
+  if(!data.groups||!data.groups.length){data={groups:[{id:gId(),name:'第1组',accounts:[]}],currentGroup:0,history:[]}}
+  const ss=localStorage.getItem('liudao_sound');if(ss!==null)soundOn=ss==='true';
+  saveData();updateSoundBtn();
 }
 function saveData(){localStorage.setItem(STORAGE_KEY,JSON.stringify(data))}
 function gId(){return 'g_'+Date.now()+'_'+Math.random().toString(36).slice(2,6)}
 function aId(){return 'a_'+Date.now()+'_'+Math.random().toString(36).slice(2,6)}
 
+/* ===== SOUND ===== */
+let audioCtx=null;
+function playSound(){
+  if(!soundOn)return;
+  try{
+    if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+    const osc=audioCtx.createOscillator();const gain=audioCtx.createGain();
+    osc.connect(gain);gain.connect(audioCtx.destination);
+    osc.frequency.value=880;osc.type='sine';gain.gain.value=0.3;
+    osc.start();gain.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+0.5);
+    osc.stop(audioCtx.currentTime+0.5);
+  }catch(e){}
+}
+function vibrate(){if(soundOn&&navigator.vibrate)navigator.vibrate([200,100,200])}
+function toggleSound(){soundOn=!soundOn;localStorage.setItem('liudao_sound',soundOn);updateSoundBtn();toast(soundOn?'提醒已开启':'提醒已关闭')}
+function updateSoundBtn(){const b=document.getElementById('soundBtn');b.textContent=soundOn?'🔔':'🔕';b.classList.toggle('on',soundOn)}
+
 /* ===== GROUP NAV ===== */
 function curGroup(){return data.groups[data.currentGroup]}
 function prevGroup(){if(data.currentGroup>0){data.currentGroup--;saveData();render()}}
 function nextGroup(){if(data.currentGroup<data.groups.length-1){data.currentGroup++;saveData();render()}}
-function addGroup(){
-  const n=data.groups.length+1;
-  data.groups.push({id:gId(),name:'第'+n+'组',accounts:[]});
-  data.currentGroup=data.groups.length-1;
-  saveData();render();toast('已添加新组');
-}
-function deleteGroup(){
-  if(data.groups.length<=1){toast('至少保留一个组');return}
-  if(!confirm('确定删除 "'+curGroup().name+'" 及其所有账号？'))return;
-  data.groups.splice(data.currentGroup,1);
-  if(data.currentGroup>=data.groups.length)data.currentGroup=data.groups.length-1;
-  saveData();render();
-}
-function renameGroup(){
-  const name=prompt('输入新组名:',curGroup().name);
-  if(name&&name.trim()){curGroup().name=name.trim();saveData();render()}
-}
+function addGroup(){const n=data.groups.length+1;data.groups.push({id:gId(),name:'第'+n+'组',accounts:[]});data.currentGroup=data.groups.length-1;saveData();render();toast('已添加新组')}
+function deleteGroup(){if(data.groups.length<=1){toast('至少保留一个组');return}if(!confirm('确定删除 "'+curGroup().name+'" 及其所有账号？'))return;data.groups.splice(data.currentGroup,1);if(data.currentGroup>=data.groups.length)data.currentGroup=data.groups.length-1;saveData();render()}
+function renameGroup(){const name=prompt('输入新组名:',curGroup().name);if(name&&name.trim()){curGroup().name=name.trim();saveData();render()}}
 
 /* ===== ACCOUNT CRUD ===== */
-let editId=null;
 function openAddModal(){
-  editId=null;
-  document.getElementById('modalTitle').textContent='添加账号';
-  ['fPhone','fNinja'].forEach(id=>document.getElementById(id).value='');
+  editId=null;document.getElementById('modalTitle').textContent='添加账号';
+  ['fPhone','fNinja','fNote'].forEach(id=>document.getElementById(id).value='');
   ['fStar3','fStar4','fStar5','fFrag','fSilver'].forEach(id=>document.getElementById(id).value='0');
-  document.getElementById('fFaction').value='fire';
-  populateGroupSelect();
-  document.getElementById('fGroup').value=data.currentGroup;
+  document.getElementById('fTimer').value='24';document.getElementById('fFaction').value='fire';
+  populateGroupSelect();document.getElementById('fGroup').value=data.currentGroup;
   document.getElementById('modalOverlay').classList.add('active');
 }
 function openEditModal(acc,gi){
-  editId=acc.id;
-  document.getElementById('modalTitle').textContent='编辑账号';
-  document.getElementById('fPhone').value=acc.phone;
-  document.getElementById('fNinja').value=acc.ninja;
-  document.getElementById('fStar3').value=acc.star3||0;
-  document.getElementById('fStar4').value=acc.star4||0;
-  document.getElementById('fStar5').value=acc.star5||0;
-  document.getElementById('fFrag').value=acc.fragments||0;
-  document.getElementById('fFaction').value=acc.faction;
-  document.getElementById('fSilver').value=acc.dailySilver||0;
-  populateGroupSelect();
-  document.getElementById('fGroup').value=gi;
+  editId=acc.id;document.getElementById('modalTitle').textContent='编辑账号';
+  document.getElementById('fPhone').value=acc.phone;document.getElementById('fNinja').value=acc.ninja;
+  document.getElementById('fStar3').value=acc.star3||0;document.getElementById('fStar4').value=acc.star4||0;document.getElementById('fStar5').value=acc.star5||0;
+  document.getElementById('fFrag').value=acc.fragments||0;document.getElementById('fFaction').value=acc.faction;
+  document.getElementById('fSilver').value=acc.dailySilver||0;document.getElementById('fTimer').value=acc.timerHours||24;
+  document.getElementById('fNote').value=acc.note||'';
+  populateGroupSelect();document.getElementById('fGroup').value=gi;
   document.getElementById('modalOverlay').classList.add('active');
 }
 function populateGroupSelect(){
@@ -216,214 +287,229 @@ function populateGroupSelect(){
 }
 function closeModal(){document.getElementById('modalOverlay').classList.remove('active');editId=null}
 function saveAccount(){
-  const phone=document.getElementById('fPhone').value.trim();
-  const ninja=document.getElementById('fNinja').value.trim();
+  const phone=document.getElementById('fPhone').value.trim();const ninja=document.getElementById('fNinja').value.trim();
   if(!phone&&!ninja){toast('请填写手机号或忍者名');return}
   const gi=parseInt(document.getElementById('fGroup').value);
-  if(!editId&&data.groups[gi].accounts.length>=4){toast('该组已满(最多4个)，请选择其他组');return}
+  if(!editId&&data.groups[gi].accounts.length>=4){toast('该组已满(最多4个)');return}
   const acc={
-    id:editId||aId(),
-    phone:phone||'未命名',
-    ninja:ninja||'未设置',
-    star3:parseInt(document.getElementById('fStar3').value)||0,
-    star4:parseInt(document.getElementById('fStar4').value)||0,
-    star5:parseInt(document.getElementById('fStar5').value)||0,
-    fragments:parseInt(document.getElementById('fFrag').value)||0,
-    faction:document.getElementById('fFaction').value,
-    dailySilver:parseInt(document.getElementById('fSilver').value)||0,
-    lastClaimTime:null
+    id:editId||aId(),phone:phone||'未命名',ninja:ninja||'未设置',
+    star3:parseInt(document.getElementById('fStar3').value)||0,star4:parseInt(document.getElementById('fStar4').value)||0,star5:parseInt(document.getElementById('fStar5').value)||0,
+    fragments:parseInt(document.getElementById('fFrag').value)||0,faction:document.getElementById('fFaction').value,
+    dailySilver:parseInt(document.getElementById('fSilver').value)||0,timerHours:parseInt(document.getElementById('fTimer').value)||24,
+    note:document.getElementById('fNote').value.trim(),lastClaimTime:null
   };
   if(editId){
-    // check target group capacity first (if moving to different group)
     const srcGroup=data.groups.find(g=>g.accounts.some(a=>a.id===editId));
-    if(srcGroup&&srcGroup!==data.groups[gi]&&data.groups[gi].accounts.length>=4){toast('目标组已满(最多4个)');return}
-    // find and remove from old group, preserve claim time
-    for(const g of data.groups){
-      const idx=g.accounts.findIndex(a=>a.id===editId);
-      if(idx!==-1){acc.lastClaimTime=g.accounts[idx].lastClaimTime;g.accounts.splice(idx,1);break}
-    }
-    data.groups[gi].accounts.push(acc);
-    toast('已更新');
-  }else{
-    data.groups[gi].accounts.push(acc);
-    toast('已添加');
-  }
+    if(srcGroup&&srcGroup!==data.groups[gi]&&data.groups[gi].accounts.length>=4){toast('目标组已满');return}
+    for(const g of data.groups){const idx=g.accounts.findIndex(a=>a.id===editId);if(idx!==-1){acc.lastClaimTime=g.accounts[idx].lastClaimTime;g.accounts.splice(idx,1);break}}
+    data.groups[gi].accounts.push(acc);toast('已更新');
+  }else{data.groups[gi].accounts.push(acc);toast('已添加')}
   saveData();closeModal();render();
 }
-function deleteAccount(accId){
-  if(!confirm('确定删除此账号？'))return;
-  for(const g of data.groups){
-    const idx=g.accounts.findIndex(a=>a.id===accId);
-    if(idx!==-1){g.accounts.splice(idx,1);break}
-  }
-  saveData();render();
-}
+function deleteAccount(accId){if(!confirm('确定删除此账号？'))return;for(const g of data.groups){const idx=g.accounts.findIndex(a=>a.id===accId);if(idx!==-1){g.accounts.splice(idx,1);break}}saveData();render()}
+function copyPhone(phone){navigator.clipboard.writeText(phone).then(()=>toast('已复制: '+phone)).catch(()=>toast('复制失败'))}
 function claimReward(accId){
-  for(const g of data.groups){
-    const acc=g.accounts.find(a=>a.id===accId);
-    if(acc){acc.lastClaimTime=Date.now();break}
-  }
-  saveData();render();
+  for(const g of data.groups){const acc=g.accounts.find(a=>a.id===accId);if(acc){
+    acc.lastClaimTime=Date.now();
+    data.history.unshift({phone:acc.phone,ninja:acc.ninja,silver:acc.dailySilver,time:Date.now()});
+    if(data.history.length>500)data.history=data.history.slice(0,500);
+    break}}
+  saveData();render();playSound();vibrate();
 }
 function claimAll(){
-  const g=curGroup();
-  const now=Date.now();
-  let count=0;
-  for(const acc of g.accounts){
-    const st=getStatus(acc);
-    if(!acc.lastClaimTime||st==='claim'||st==='over'){acc.lastClaimTime=now;count++}
+  const g=curGroup();const now=Date.now();let count=0;
+  for(const acc of g.accounts){const st=getStatus(acc);if(!acc.lastClaimTime||st==='claim'||st==='over'){
+    acc.lastClaimTime=now;count++;
+    data.history.unshift({phone:acc.phone,ninja:acc.ninja,silver:acc.dailySilver,time:now});
+  }}
+  if(data.history.length>500)data.history=data.history.slice(0,500);
+  saveData();render();if(count){toast(`已标记 ${count} 个账号领取`);playSound();vibrate()}else toast('本组没有可领取的账号');
+}
+
+/* ===== BATCH ADD ===== */
+function openBatchModal(){
+  document.getElementById('batchText').value='';
+  const sel=document.getElementById('batchGroup');
+  sel.innerHTML=data.groups.map((g,i)=>`<option value="${i}">${g.name}${g.accounts.length>=4?' (已满)':''}</option>`).join('');
+  sel.value=data.currentGroup;
+  document.getElementById('batchOverlay').classList.add('active');
+}
+function closeBatchModal(){document.getElementById('batchOverlay').classList.remove('active')}
+function batchAdd(){
+  const text=document.getElementById('batchText').value.trim();if(!text){toast('请输入账号数据');return}
+  const gi=parseInt(document.getElementById('batchGroup').value);
+  if(data.groups[gi].accounts.length>=4){toast('该组已满');return}
+  const lines=text.split('\n').filter(l=>l.trim());let added=0;
+  for(const line of lines){
+    if(data.groups[gi].accounts.length>=4)break;
+    const parts=line.split(/[,，\t]/).map(s=>s.trim());
+    const acc={id:aId(),phone:parts[0]||'未命名',ninja:parts[1]||'未设置',
+      star3:0,star4:0,star5:0,fragments:0,
+      faction:FACTION_CN[parts[2]]||'fire',dailySilver:parseInt(parts[3])||0,
+      timerHours:24,note:parts[4]||'',lastClaimTime:null};
+    data.groups[gi].accounts.push(acc);added++;
   }
-  saveData();render();
-  if(count)toast(`已标记 ${count} 个账号领取`);
-  else toast('本组没有可领取的账号');
+  saveData();closeBatchModal();render();toast(`已添加 ${added} 个账号`);
+}
+
+/* ===== HISTORY ===== */
+function openHistoryModal(){
+  const c=document.getElementById('historyContent');
+  if(!data.history.length){c.innerHTML='<p style="color:var(--text2);text-align:center;padding:20px">暂无领取记录</p>'}
+  else{c.innerHTML='<div class="history-list">'+data.history.map(h=>
+    `<div class="history-item"><span>${h.phone} ${h.ninja}</span><span style="color:#ffc107">+${h.silver}🪙</span><span style="color:var(--text2)">${new Date(h.time).toLocaleString('zh-CN',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'})}</span></div>`
+  ).join('')+'</div>'}
+  document.getElementById('historyOverlay').classList.add('active');
+}
+function closeHistoryModal(){document.getElementById('historyOverlay').classList.remove('active')}
+function clearHistory(){if(!confirm('清空所有领取记录？'))return;data.history=[];saveData();openHistoryModal();toast('记录已清空')}
+
+/* ===== STATS ===== */
+function toggleStats(){document.getElementById('statsPanel').classList.toggle('open');renderStats()}
+function renderStats(){
+  let total=0,claimable=0,overdue=0,silver=0,claimed=0;
+  const factionCount={water:0,fire:0,wind:0,earth:0};
+  for(const g of data.groups)for(const a of g.accounts){
+    total++;silver+=a.dailySilver||0;factionCount[a.faction]=(factionCount[a.faction]||0)+1;
+    const st=getStatus(a);if(st==='claim')claimable++;if(st==='over')overdue++;
+  }
+  const today=new Date();today.setHours(0,0,0,0);
+  claimed=data.history.filter(h=>h.time>=today.getTime()).length;
+  const todaySilver=data.history.filter(h=>h.time>=today.getTime()).reduce((s,h)=>s+(h.silver||0),0);
+  document.getElementById('statsGrid').innerHTML=`
+    <div class="stat-item"><div class="stat-val">${total}</div><div class="stat-label">总账号</div></div>
+    <div class="stat-item"><div class="stat-val" style="color:var(--green)">${claimable}</div><div class="stat-label">可领取</div></div>
+    <div class="stat-item"><div class="stat-val" style="color:var(--red)">${overdue}</div><div class="stat-label">已过期</div></div>
+    <div class="stat-item"><div class="stat-val" style="color:#ffc107">${silver}</div><div class="stat-label">银锭/日</div></div>
+    <div class="stat-item"><div class="stat-val">${claimed}</div><div class="stat-label">今日已领</div></div>
+    <div class="stat-item"><div class="stat-val" style="color:#ffc107">${todaySilver}</div><div class="stat-label">今日银锭</div></div>
+    <div class="stat-item"><div class="stat-val">${factionCount.fire}</div><div class="stat-label">🔥火</div></div>
+    <div class="stat-item"><div class="stat-val">${factionCount.water}</div><div class="stat-label">💧水</div></div>
+    <div class="stat-item"><div class="stat-val">${factionCount.wind}</div><div class="stat-label">🌪风</div></div>
+    <div class="stat-item"><div class="stat-val">${factionCount.earth}</div><div class="stat-label">🏔土</div></div>`;
 }
 
 /* ===== TIMER ===== */
 function getStatus(acc){
   if(!acc.lastClaimTime)return'claim';
-  const diff=Date.now()-acc.lastClaimTime;
-  if(diff>=MS24H+3600000)return'over'; // 超过25小时=过期未领
-  if(diff>=MS24H)return'claim';
+  const diff=Date.now()-acc.lastClaimTime;const ms=getTimerMs(acc);
+  if(diff>=ms+3600000)return'over';
+  if(diff>=ms)return'claim';
   return'wait';
 }
 function formatTimer(acc){
   if(!acc.lastClaimTime)return'可领取';
-  const diff=Date.now()-acc.lastClaimTime;
-  const remain=MS24H-diff;
-  if(diff>=MS24H+3600000)return'已过期!';
+  const diff=Date.now()-acc.lastClaimTime;const ms=getTimerMs(acc);const remain=ms-diff;
+  if(diff>=ms+3600000)return'已过期!';
   if(remain<=0)return'可领取';
-  const h=Math.floor(remain/3600000);
-  const m=Math.floor((remain%3600000)/60000);
-  const s=Math.floor((remain%60000)/1000);
+  const h=Math.floor(remain/3600000);const m=Math.floor((remain%3600000)/60000);const s=Math.floor((remain%60000)/1000);
   return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
 }
+function getRemain(acc){if(!acc.lastClaimTime)return 0;return Math.max(0,getTimerMs(acc)-(Date.now()-acc.lastClaimTime))}
 
 /* ===== RENDER ===== */
 function render(){
   const g=curGroup();
-  // group nav
   document.getElementById('groupTitle').innerHTML=`${g.name} <span>(${data.currentGroup+1}/${data.groups.length})</span>`;
   document.getElementById('btnPrev').disabled=data.currentGroup===0;
   document.getElementById('btnNext').disabled=data.currentGroup===data.groups.length-1;
-  // cards
-  const grid=document.getElementById('cardsGrid');
-  let html='';
-  const accs=g.accounts;
-  const maxSlots=Math.max(4,accs.length);
+  const search=document.getElementById('searchInput').value.trim().toLowerCase();
+  const sort=document.getElementById('sortSelect').value;
+  let accs=[...g.accounts.map((a,i)=>({...a,_idx:i}))];
+  if(search){accs=accs.filter(a=>(a.phone+a.ninja+(a.note||"")).toLowerCase().includes(search))}
+  if(sort==='timer-asc')accs.sort((a,b)=>getRemain(a)-getRemain(b));
+  else if(sort==='timer-desc')accs.sort((a,b)=>getRemain(b)-getRemain(a));
+  else if(sort==='silver')accs.sort((a,b)=>(b.dailySilver||0)-(a.dailySilver||0));
+  else if(sort==='faction')accs.sort((a,b)=>a.faction.localeCompare(b.faction));
+  const grid=document.getElementById('cardsGrid');let html='';
+  const maxSlots=sort!=='group'?accs.length:Math.max(4,accs.length);
   for(let i=0;i<maxSlots;i++){
     if(i<accs.length){
-      const a=accs[i];
-      const st=getStatus(a);
-      const timer=formatTimer(a);
+      const a=accs[i];const st=getStatus(a);const timer=formatTimer(a);
       const canClaim=st==='claim'||st==='over';
       const btnText=st==='over'?'⚠ 立即领取':canClaim?'✓ 已领取':'倒计时中';
+      const gi=a._idx!==undefined?data.currentGroup:data.groups.findIndex(g=>g.accounts.some(x=>x.id===a.id));
+      const idx=a._idx!==undefined?a._idx:data.groups[gi]?.accounts.findIndex(x=>x.id===a.id)||0;
       html+=`<div class="account-card status-${st}">
         <div class="card-header">
-          <span class="card-phone">${a.phone}</span>
+          <span class="card-phone" onclick="copyPhone('${a.phone}')">${a.phone}</span>
           <div class="card-actions">
-            <button onclick="openEditModal(data.groups[${data.currentGroup}].accounts[${i}],${data.currentGroup})">✏</button>
+            <button onclick="openEditModal(data.groups[${gi}].accounts[${idx}],${gi})">✏</button>
             <button onclick="deleteAccount('${a.id}')">✕</button>
           </div>
         </div>
         <div class="card-ninja"><span class="faction-badge faction-${a.faction}">${FACTION_MAP[a.faction]}</span> ${a.ninja}</div>
-        <div class="card-stars">
-          ${(a.star3?`<span class="star3">3星×${a.star3}</span>`:'')+(a.star4?`<span class="star4">4星×${a.star4}</span>`:'')+(a.star5?`<span class="star5">5星×${a.star5}</span>`:'')||'<span>未设置星数</span>'}
-        </div>
+        <div class="card-stars">${(a.star3?`<span class="star3">3星×${a.star3}</span>`:'')+(a.star4?`<span class="star4">4星×${a.star4}</span>`:'')+(a.star5?`<span class="star5">5星×${a.star5}</span>`:'')||'<span>未设置星数</span>'}</div>
         <div class="card-frag">碎片: ${a.fragments}</div>
         <div class="card-silver">🪙 ${a.dailySilver} 银锭/日</div>
+        ${a.note?`<div class="card-note">📝 ${a.note}</div>`:''}
         <div class="card-timer timer-${st}">${timer}</div>
         <button class="card-claim-btn ${canClaim?'claimable':'waiting'}" onclick="${canClaim?`claimReward('${a.id}')`:''}">${btnText}</button>
       </div>`;
-    }else{
-      html+=`<div class="empty-card" onclick="openAddModal()">+ 添加账号</div>`;
-    }
+    }else{html+=`<div class="empty-card" onclick="openAddModal()">+ 添加账号</div>`}
   }
   grid.innerHTML=html;
-  // group dots
+  // dots
   const dots=document.getElementById('groupDots');
   dots.innerHTML=data.groups.map((g,i)=>{
-    let cls='group-dot';
-    if(i===data.currentGroup)cls+=' active';
-    const hasClaim=g.accounts.some(a=>getStatus(a)==='claim');
-    const hasOver=g.accounts.some(a=>getStatus(a)==='over');
-    if(hasOver)cls+=' has-over';
-    else if(hasClaim)cls+=' has-claim';
-    else if(g.accounts.length>0)cls+=' all-wait';
-    else cls+=' empty';
+    let cls='group-dot';if(i===data.currentGroup)cls+=' active';
+    const hasClaim=g.accounts.some(a=>getStatus(a)==='claim');const hasOver=g.accounts.some(a=>getStatus(a)==='over');
+    if(hasOver)cls+=' has-over';else if(hasClaim)cls+=' has-claim';else if(g.accounts.length>0)cls+=' all-wait';else cls+=' empty';
     return `<div class="${cls}" onclick="data.currentGroup=${i};saveData();render()" title="${g.name}"></div>`;
   }).join('');
-  // stats
+  // stats bar
   let total=0,claimable=0,silver=0;
-  for(const gr of data.groups)for(const a of gr.accounts){
-    total++;silver+=a.dailySilver||0;
-    if(getStatus(a)==='claim'||getStatus(a)==='over')claimable++;
-  }
-  document.getElementById('statTotal').textContent=total;
-  document.getElementById('statClaim').textContent=claimable;
-  document.getElementById('statSilver').textContent=silver;
+  for(const gr of data.groups)for(const a of gr.accounts){total++;silver+=a.dailySilver||0;const st=getStatus(a);if(st==='claim'||st==='over')claimable++}
+  document.getElementById('statTotal').textContent=total;document.getElementById('statClaim').textContent=claimable;document.getElementById('statSilver').textContent=silver;
+  // check notifications
+  checkNotifications();
 }
 
 /* ===== EXPORT/IMPORT ===== */
 function exportData(){
   const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');a.href=url;a.download=`六道轮回_${new Date().toLocaleDateString().replace(/\//g,'-')}.json`;a.click();
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');
+  a.href=url;a.download=`六道轮回_${new Date().toLocaleDateString().replace(/\//g,'-')}.json`;a.click();
   URL.revokeObjectURL(url);toast('导出成功');
 }
 function importData(){document.getElementById('fileInput').click()}
 function handleImport(e){
-  const file=e.target.files[0];if(!file)return;
-  const reader=new FileReader();
-  reader.onload=function(ev){
-    try{
-      const imported=JSON.parse(ev.target.result);
-      if(!imported.groups||!Array.isArray(imported.groups)){toast('文件格式错误');return}
-      data=imported;data.currentGroup=0;saveData();render();toast('导入成功');
-    }catch(err){toast('导入失败：文件格式错误')}
-  };
-  reader.readAsText(file);
-  e.target.value='';
+  const file=e.target.files[0];if(!file)return;const reader=new FileReader();
+  reader.onload=function(ev){try{const imported=JSON.parse(ev.target.result);
+    if(!imported.groups||!Array.isArray(imported.groups)){toast('文件格式错误');return}
+    data=imported;if(!data.history)data.history=[];data.currentGroup=0;saveData();render();toast('导入成功');
+  }catch(err){toast('导入失败')}};reader.readAsText(file);e.target.value='';
 }
 
 /* ===== NOTIFICATION ===== */
-function requestNotification(){
-  if('Notification'in window&&Notification.permission==='default'){Notification.requestPermission()}
-}
+function requestNotification(){if('Notification'in window&&Notification.permission==='default')Notification.requestPermission()}
 function checkNotifications(){
-  if(!('Notification'in window)||Notification.permission!=='granted')return;
+  if(!soundOn)return;
   for(const g of data.groups)for(const a of g.accounts){
-    if((getStatus(a)==='claim'||getStatus(a)==='over')&&!a._notified){
-      a._notified=true;
-      new Notification('六道轮回·领奖提醒',{body:`${a.phone} - ${a.ninja} 可领取银锭！`,icon:'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🔔</text></svg>'});
+    const st=getStatus(a);
+    if((st==='claim'||st==='over')&&!a._notified){
+      a._notified=true;playSound();vibrate();
+      if('Notification'in window&&Notification.permission==='granted')
+        new Notification('六道轮回·领奖提醒',{body:`${a.phone} - ${a.ninja} 可领取银锭！`});
     }
-    if(getStatus(a)!=='claim'&&getStatus(a)!=='over')a._notified=false;
+    if(st==='wait')a._notified=false;
   }
 }
 
 /* ===== TOAST ===== */
-function toast(msg){
-  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2000);
-}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000)}
 
-/* ===== SWIPE NAV ===== */
-let touchStartX=0,touchEndX=0;
+/* ===== SWIPE ===== */
+let touchStartX=0;
 document.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX},{passive:true});
-document.addEventListener('touchend',e=>{
-  touchEndX=e.changedTouches[0].screenX;
-  const diff=touchStartX-touchEndX;
-  if(Math.abs(diff)>60){
-    if(diff>0)nextGroup();else prevGroup();
-  }
-},{passive:true});
+document.addEventListener('touchend',e=>{const diff=touchStartX-e.changedTouches[0].screenX;if(Math.abs(diff)>60){if(diff>0)nextGroup();else prevGroup()}},{passive:true});
 
 /* ===== TIMER LOOP ===== */
-setInterval(()=>{render();checkNotifications()},1000);
+setInterval(render,1000);
 
 /* ===== INIT ===== */
 loadData();render();requestNotification();
-// PWA Service Worker
-if('serviceWorker'in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{})}
+if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>
 </html>
