@@ -69,6 +69,10 @@ select.tool-select{padding:6px 8px;border:1px solid rgba(255,255,255,.15);border
 .card-frag{font-size:11px;color:var(--text2);margin-bottom:3px}
 .card-silver{font-size:12px;font-weight:600;color:#ffc107;margin-bottom:4px}
 .card-note{font-size:10px;color:var(--text2);margin-bottom:4px;font-style:italic;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card-online{display:flex;align-items:center;gap:4px;margin-bottom:4px}
+.online-btn{padding:2px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);color:var(--text2);font-size:10px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.online-btn:hover{border-color:var(--accent);color:var(--accent)}
+.online-btn.online-today{border-color:var(--green);color:var(--green);background:rgba(0,214,114,.1)}
 .card-timer{font-size:20px;font-weight:700;text-align:center;padding:4px 0;border-radius:6px;margin-top:2px}
 .timer-claim{color:var(--green);background:rgba(0,214,114,.1)}
 .timer-wait{color:var(--yellow);background:rgba(255,193,7,.08)}
@@ -143,6 +147,7 @@ select.tool-select{padding:6px 8px;border:1px solid rgba(255,255,255,.15);border
 <div class="stats-bar">
   <span>总账号: <b id="statTotal">0</b></span>
   <span>可领取: <b id="statClaim" style="color:var(--green)">0</b></span>
+  <span>今日上线: <b id="statOnline" style="color:#4fc3f7">0</b></span>
   <span>总银锭/日: <b id="statSilver" style="color:#ffc107">0</b></span>
 </div>
 <div class="group-nav">
@@ -158,6 +163,7 @@ select.tool-select{padding:6px 8px;border:1px solid rgba(255,255,255,.15);border
 <div class="group-dots" id="groupDots"></div>
 <div class="cards-grid" id="cardsGrid"></div>
 <button class="group-claim-all" onclick="claimAll()">✓ 本组全部已领取</button>
+<button class="group-claim-all" onclick="onlineAll()" style="background:linear-gradient(135deg,#4fc3f7,#81d4fa);margin-bottom:20px">🟢 本组全部上线</button>
 
 <!-- Add/Edit Modal -->
 <div class="modal-overlay" id="modalOverlay">
@@ -308,6 +314,15 @@ function saveAccount(){
 }
 function deleteAccount(accId){if(!confirm('确定删除此账号？'))return;for(const g of data.groups){const idx=g.accounts.findIndex(a=>a.id===accId);if(idx!==-1){g.accounts.splice(idx,1);break}}saveData();render()}
 function copyPhone(phone){navigator.clipboard.writeText(phone).then(()=>toast('已复制: '+phone)).catch(()=>toast('复制失败'))}
+function markOnline(accId){
+  for(const g of data.groups){const acc=g.accounts.find(a=>a.id===accId);if(acc){acc.lastOnlineTime=Date.now();break}}
+  saveData();render();toast('已记录上线时间');
+}
+function onlineAll(){
+  const g=curGroup();const now=Date.now();let count=0;
+  for(const acc of g.accounts){acc.lastOnlineTime=now;count++}
+  saveData();render();toast(`已标记 ${count} 个账号上线`);
+}
 function claimReward(accId){
   for(const g of data.groups){const acc=g.accounts.find(a=>a.id===accId);if(acc){
     acc.lastClaimTime=Date.now();
@@ -367,11 +382,12 @@ function clearHistory(){if(!confirm('清空所有领取记录？'))return;data.h
 /* ===== STATS ===== */
 function toggleStats(){document.getElementById('statsPanel').classList.toggle('open');renderStats()}
 function renderStats(){
-  let total=0,claimable=0,overdue=0,silver=0,claimed=0;
+  let total=0,claimable=0,overdue=0,silver=0,claimed=0,onlineToday=0;
   const factionCount={water:0,fire:0,wind:0,earth:0};
   for(const g of data.groups)for(const a of g.accounts){
     total++;silver+=a.dailySilver||0;factionCount[a.faction]=(factionCount[a.faction]||0)+1;
     const st=getStatus(a);if(st==='claim')claimable++;if(st==='over')overdue++;
+    if(a.lastOnlineTime&&new Date(a.lastOnlineTime).toDateString()===new Date().toDateString())onlineToday++;
   }
   const today=new Date();today.setHours(0,0,0,0);
   claimed=data.history.filter(h=>h.time>=today.getTime()).length;
@@ -380,6 +396,7 @@ function renderStats(){
     <div class="stat-item"><div class="stat-val">${total}</div><div class="stat-label">总账号</div></div>
     <div class="stat-item"><div class="stat-val" style="color:var(--green)">${claimable}</div><div class="stat-label">可领取</div></div>
     <div class="stat-item"><div class="stat-val" style="color:var(--red)">${overdue}</div><div class="stat-label">已过期</div></div>
+    <div class="stat-item"><div class="stat-val" style="color:#4fc3f7">${onlineToday}</div><div class="stat-label">今日上线</div></div>
     <div class="stat-item"><div class="stat-val" style="color:#ffc107">${silver}</div><div class="stat-label">银锭/日</div></div>
     <div class="stat-item"><div class="stat-val">${claimed}</div><div class="stat-label">今日已领</div></div>
     <div class="stat-item"><div class="stat-val" style="color:#ffc107">${todaySilver}</div><div class="stat-label">今日银锭</div></div>
@@ -430,6 +447,8 @@ function render(){
       const btnText=st==='over'?'⚠ 立即领取':canClaim?'✓ 已领取':'倒计时中';
       const gi=a._idx!==undefined?data.currentGroup:data.groups.findIndex(g=>g.accounts.some(x=>x.id===a.id));
       const idx=a._idx!==undefined?a._idx:data.groups[gi]?.accounts.findIndex(x=>x.id===a.id)||0;
+      const isOnlineToday=a.lastOnlineTime&&new Date(a.lastOnlineTime).toDateString()===new Date().toDateString();
+      const onlineText=isOnlineToday?'🟢 已上线 '+new Date(a.lastOnlineTime).toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit'}):'⚪ 未上线';
       html+=`<div class="account-card status-${st}">
         <div class="card-header">
           <span class="card-phone" onclick="copyPhone('${a.phone}')">${a.phone}</span>
@@ -443,6 +462,7 @@ function render(){
         <div class="card-frag">碎片: ${a.fragments}</div>
         <div class="card-silver">🪙 ${a.dailySilver} 银锭/日</div>
         ${a.note?`<div class="card-note">📝 ${a.note}</div>`:''}
+        <div class="card-online"><button class="online-btn ${isOnlineToday?'online-today':''}" onclick="markOnline('${a.id}')">${onlineText}</button></div>
         <div class="card-timer timer-${st}">${timer}</div>
         <button class="card-claim-btn ${canClaim?'claimable':'waiting'}" onclick="${canClaim?`claimReward('${a.id}')`:''}">${btnText}</button>
       </div>`;
@@ -458,9 +478,9 @@ function render(){
     return `<div class="${cls}" onclick="data.currentGroup=${i};saveData();render()" title="${g.name}"></div>`;
   }).join('');
   // stats bar
-  let total=0,claimable=0,silver=0;
-  for(const gr of data.groups)for(const a of gr.accounts){total++;silver+=a.dailySilver||0;const st=getStatus(a);if(st==='claim'||st==='over')claimable++}
-  document.getElementById('statTotal').textContent=total;document.getElementById('statClaim').textContent=claimable;document.getElementById('statSilver').textContent=silver;
+  let total=0,claimable=0,silver=0,onlineToday=0;
+  for(const gr of data.groups)for(const a of gr.accounts){total++;silver+=a.dailySilver||0;const st=getStatus(a);if(st==='claim'||st==='over')claimable++;if(a.lastOnlineTime&&new Date(a.lastOnlineTime).toDateString()===new Date().toDateString())onlineToday++}
+  document.getElementById('statTotal').textContent=total;document.getElementById('statClaim').textContent=claimable;document.getElementById('statOnline').textContent=onlineToday;document.getElementById('statSilver').textContent=silver;
   // check notifications
   checkNotifications();
 }
