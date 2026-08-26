@@ -292,9 +292,16 @@ function populateGroupSelect(){
   sel.innerHTML=data.groups.map((g,i)=>`<option value="${i}">${g.name}${!editId&&g.accounts.length>=4?' (已满)':''}</option>`).join('');
 }
 function closeModal(){document.getElementById('modalOverlay').classList.remove('active');editId=null}
+function isPhoneDuplicate(phone,excludeId){
+  if(!phone||phone==='未命名')return false;
+  for(const g of data.groups)for(const a of g.accounts){if(a.id!==excludeId&&a.phone===phone)return a}
+  return false;
+}
 function saveAccount(){
   const phone=document.getElementById('fPhone').value.trim();const ninja=document.getElementById('fNinja').value.trim();
   if(!phone&&!ninja){toast('请填写手机号或忍者名');return}
+  const dup=isPhoneDuplicate(phone,editId);
+  if(dup){toast(`手机号重复: ${dup.phone} (${dup.ninja})`);return}
   const gi=parseInt(document.getElementById('fGroup').value);
   if(!editId&&data.groups[gi].accounts.length>=4){toast('该组已满(最多4个)');return}
   const acc={
@@ -354,17 +361,21 @@ function batchAdd(){
   const text=document.getElementById('batchText').value.trim();if(!text){toast('请输入账号数据');return}
   const gi=parseInt(document.getElementById('batchGroup').value);
   if(data.groups[gi].accounts.length>=4){toast('该组已满');return}
-  const lines=text.split('\n').filter(l=>l.trim());let added=0;
+  const lines=text.split('\n').filter(l=>l.trim());let added=0,skipped=0;
   for(const line of lines){
     if(data.groups[gi].accounts.length>=4)break;
     const parts=line.split(/[,，\t]/).map(s=>s.trim());
-    const acc={id:aId(),phone:parts[0]||'未命名',ninja:parts[1]||'未设置',
+    const phone=parts[0]||'';
+    if(phone&&isPhoneDuplicate(phone,null)){skipped++;continue}
+    const acc={id:aId(),phone:phone||'未命名',ninja:parts[1]||'未设置',
       star3:0,star4:0,star5:0,fragments:0,
       faction:FACTION_CN[parts[2]]||'fire',dailySilver:parseInt(parts[3])||0,
       timerHours:24,note:parts[4]||'',lastClaimTime:null};
     data.groups[gi].accounts.push(acc);added++;
   }
-  saveData();closeBatchModal();render();toast(`已添加 ${added} 个账号`);
+  saveData();closeBatchModal();render();
+  if(skipped)toast(`已添加 ${added} 个，跳过 ${skipped} 个重复`);
+  else toast(`已添加 ${added} 个账号`);
 }
 
 /* ===== HISTORY ===== */
