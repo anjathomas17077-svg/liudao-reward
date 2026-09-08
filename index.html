@@ -649,6 +649,7 @@ async function testWxPusher(){
   else toast('❌ 推送失败，请检查配置或网络');
 }
 function openWxPusherModal(){
+  try{
   loadWxPusherConfig();
   document.getElementById('fSpt').value=wxConfig.spt||'';
   document.getElementById('fWxMode').value=wxConfig.mode||'simple';
@@ -657,6 +658,7 @@ function openWxPusherModal(){
   document.getElementById('standardFields').style.display=wxConfig.mode==='standard'?'block':'none';
   updateWxPusherStatus();
   document.getElementById('wxpusherOverlay').classList.add('active');
+  }catch(e){toast('打开设置失败: '+e.message)}
 }
 function closeWxPusherModal(){document.getElementById('wxpusherOverlay').classList.remove('active')}
 
@@ -685,11 +687,13 @@ function updateGithubStatus(){
   }
 }
 function openGithubModal(){
+  try{
   loadGithubConfig();
   document.getElementById('fGithubToken').value=ghConfig.token||'';
   document.getElementById('fGithubRepo').value=ghConfig.repo||'';
   updateGithubStatus();
   document.getElementById('githubOverlay').classList.add('active');
+  }catch(e){toast('打开设置失败: '+e.message)}
 }
 function closeGithubModal(){document.getElementById('githubOverlay').classList.remove('active')}
 
