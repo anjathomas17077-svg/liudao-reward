@@ -708,7 +708,7 @@ async function syncToGitHub(){
     let sha=null;
     try{
       const checkResp=await fetch(`https://api.github.com/repos/${ghConfig.repo}/contents/data.json`,{
-        headers:{'Authorization':'token '+ghConfig.token,'Accept':'application/vnd.github.v3+json'}
+        headers:{'Authorization':'Bearer '+ghConfig.token,'Accept':'application/vnd.github.v3+json'}
       });
       if(checkResp.ok){const checkData=await checkResp.json();sha=checkData.sha}
     }catch(e){}
@@ -717,7 +717,7 @@ async function syncToGitHub(){
     if(sha)body.sha=sha;
     const resp=await fetch(`https://api.github.com/repos/${ghConfig.repo}/contents/data.json`,{
       method:'PUT',
-      headers:{'Authorization':'token '+ghConfig.token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},
+      headers:{'Authorization':'Bearer '+ghConfig.token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},
       body:JSON.stringify(body)
     });
     if(resp.ok){
