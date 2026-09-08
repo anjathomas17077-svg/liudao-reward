@@ -41,7 +41,7 @@ const claimable = [];
 for (const g of data.groups) {
   for (const a of g.accounts) {
     const st = getStatus(a);
-    if (st === 'claim' || st === 'over' || st === 'new') {
+    if (st === 'claim' || st === 'over') {
       claimable.push({ ...a, status: st, groupName: g.name });
     }
   }
