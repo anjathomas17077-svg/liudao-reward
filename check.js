@@ -72,9 +72,9 @@ function sendWxPusher(content) {
     const uids = process.env.WXPUSHER_UIDS;
 
     let body;
-    if (spt) {
-      // 极简推送
-      body = JSON.stringify({ spt, content, contentType: 1 });
+    if (spt && appToken) {
+      // 极简推送（需要spt + appToken）
+      body = JSON.stringify({ spt, appToken, content, contentType: 1 });
     } else if (appToken && uids) {
       // 标准推送
       const uidList = uids.split(/[,，\s]+/).filter(u => u.trim());
