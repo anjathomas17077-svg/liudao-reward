@@ -71,22 +71,24 @@ function sendWxPusher(content) {
     const appToken = process.env.WXPUSHER_APP_TOKEN;
     const uids = process.env.WXPUSHER_UIDS;
 
-    let body;
-    if (spt && appToken) {
-      // 极简推送（需要spt + appToken）
-      body = JSON.stringify({ spt, appToken, content, contentType: 1 });
+    let body, apiPath;
+    if (spt) {
+      // 极简推送（SPT模式，不需要appToken）
+      apiPath = '/api/send/message/simple-push';
+      body = JSON.stringify({ spt, content, summary: '六道轮回领奖提醒', contentType: 1 });
     } else if (appToken && uids) {
       // 标准推送
+      apiPath = '/api/send/message';
       const uidList = uids.split(/[,，\s]+/).filter(u => u.trim());
       body = JSON.stringify({ appToken, content, contentType: 1, uids: uidList });
     } else {
-      console.log('未配置WxPusher，跳过推送');
+      console.log('未配置WxPusher（需要WXPUSHER_SPT或WXPUSHER_APP_TOKEN+WXPUSHER_UIDS），跳过推送');
       return resolve(false);
     }
 
     const options = {
       hostname: 'wxpusher.zjiecode.com',
-      path: '/api/send/message',
+      path: apiPath,
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
