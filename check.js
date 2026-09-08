@@ -28,7 +28,7 @@ if (!data.groups || !data.groups.length) {
 
 // 检查账号状态
 function getStatus(acc) {
-  if (!acc.lastClaimTime) return 'claim';
+  if (!acc.lastClaimTime) return 'new';
   const diff = Date.now() - acc.lastClaimTime;
   const ms = (acc.timerHours || 24) * 3600000;
   if (diff >= ms + 3600000) return 'over';
@@ -41,7 +41,7 @@ const claimable = [];
 for (const g of data.groups) {
   for (const a of g.accounts) {
     const st = getStatus(a);
-    if (st === 'claim' || st === 'over') {
+    if (st === 'claim' || st === 'over' || st === 'new') {
       claimable.push({ ...a, status: st, groupName: g.name });
     }
   }
@@ -58,7 +58,7 @@ if (claimable.length === 0) {
 let msg = '🔔 六道轮回·领奖提醒\n\n';
 msg += '以下账号可领取银锭：\n\n';
 claimable.forEach((a, i) => {
-  const prefix = a.status === 'over' ? '⚠️过期' : '✅可领';
+  const prefix = a.status === 'over' ? '⚠️过期' : a.status === 'new' ? '🆕待领' : '✅可领';
   msg += `${i + 1}. ${prefix} ${a.phone} ${a.ninja}\n`;
   if (a.dailySilver) msg += `   🪙${a.dailySilver}银锭/日\n`;
 });

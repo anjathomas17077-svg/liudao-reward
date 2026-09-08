@@ -45,6 +45,7 @@ select.tool-select{padding:6px 8px;border:1px solid rgba(255,255,255,.15);border
 .group-dot.active{border-color:var(--accent);transform:scale(1.4)}
 .group-dot.has-claim{background:var(--green)}
 .group-dot.has-over{background:var(--red)}
+.group-dot.has-new{background:#4fc3f7}
 .group-dot.all-wait{background:var(--yellow)}
 .group-dot.empty{background:rgba(255,255,255,.1)}
 .cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:8px 12px;max-width:600px;margin:0 auto}
@@ -52,6 +53,7 @@ select.tool-select{padding:6px 8px;border:1px solid rgba(255,255,255,.15);border
 .account-card.status-claim{border-color:var(--green);box-shadow:0 0 12px rgba(0,214,114,.2)}
 .account-card.status-wait{border-color:var(--yellow)}
 .account-card.status-over{border-color:var(--red);box-shadow:0 0 12px rgba(255,82,82,.2);animation:pulse 2s infinite}
+.account-card.status-new{border-color:#4fc3f7;box-shadow:0 0 12px rgba(79,195,247,.2)}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.85}}
 .card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
 .card-phone{font-size:13px;font-weight:700;cursor:pointer;transition:color .2s}
@@ -77,6 +79,7 @@ select.tool-select{padding:6px 8px;border:1px solid rgba(255,255,255,.15);border
 .timer-claim{color:var(--green);background:rgba(0,214,114,.1)}
 .timer-wait{color:var(--yellow);background:rgba(255,193,7,.08)}
 .timer-over{color:var(--red);background:rgba(255,82,82,.1)}
+.timer-new{color:#4fc3f7;background:rgba(79,195,247,.1)}
 .card-claim-btn{width:100%;margin-top:6px;padding:6px;border:none;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s}
 .card-claim-btn.claimable{background:var(--green);color:#1a1a2e}
 .card-claim-btn.claimable:hover{background:#00b862}
@@ -465,11 +468,11 @@ function clearHistory(){if(!confirm('清空所有领取记录？'))return;data.h
 /* ===== STATS ===== */
 function toggleStats(){document.getElementById('statsPanel').classList.toggle('open');renderStats()}
 function renderStats(){
-  let total=0,claimable=0,overdue=0,silver=0,claimed=0,onlineToday=0;
+  let total=0,claimable=0,overdue=0,silver=0,claimed=0,onlineToday=0,newCount=0;
   const factionCount={water:0,fire:0,wind:0,earth:0};
   for(const g of data.groups)for(const a of g.accounts){
     total++;silver+=a.dailySilver||0;factionCount[a.faction]=(factionCount[a.faction]||0)+1;
-    const st=getStatus(a);if(st==='claim')claimable++;if(st==='over')overdue++;
+    const st=getStatus(a);if(st==='claim')claimable++;if(st==='over')overdue++;if(st==='new')newCount++;
     if(a.lastOnlineTime&&new Date(a.lastOnlineTime).toDateString()===new Date().toDateString())onlineToday++;
   }
   const today=new Date();today.setHours(0,0,0,0);
@@ -479,6 +482,7 @@ function renderStats(){
     <div class="stat-item"><div class="stat-val">${total}</div><div class="stat-label">总账号</div></div>
     <div class="stat-item"><div class="stat-val" style="color:var(--green)">${claimable}</div><div class="stat-label">可领取</div></div>
     <div class="stat-item"><div class="stat-val" style="color:var(--red)">${overdue}</div><div class="stat-label">已过期</div></div>
+    <div class="stat-item"><div class="stat-val" style="color:#4fc3f7">${newCount}</div><div class="stat-label">待领取</div></div>
     <div class="stat-item"><div class="stat-val" style="color:#4fc3f7">${onlineToday}</div><div class="stat-label">今日上线</div></div>
     <div class="stat-item"><div class="stat-val" style="color:#ffc107">${silver}</div><div class="stat-label">银锭/日</div></div>
     <div class="stat-item"><div class="stat-val">${claimed}</div><div class="stat-label">今日已领</div></div>
@@ -491,14 +495,14 @@ function renderStats(){
 
 /* ===== TIMER ===== */
 function getStatus(acc){
-  if(!acc.lastClaimTime)return'claim';
+  if(!acc.lastClaimTime)return'new';
   const diff=Date.now()-acc.lastClaimTime;const ms=getTimerMs(acc);
   if(diff>=ms+3600000)return'over';
   if(diff>=ms)return'claim';
   return'wait';
 }
 function formatTimer(acc){
-  if(!acc.lastClaimTime)return'可领取';
+  if(!acc.lastClaimTime)return'待领取';
   const diff=Date.now()-acc.lastClaimTime;const ms=getTimerMs(acc);const remain=ms-diff;
   if(diff>=ms+3600000)return'已过期!';
   if(remain<=0)return'可领取';
@@ -526,8 +530,8 @@ function render(){
   for(let i=0;i<maxSlots;i++){
     if(i<accs.length){
       const a=accs[i];const st=getStatus(a);const timer=formatTimer(a);
-      const canClaim=st==='claim'||st==='over';
-      const btnText=st==='over'?'⚠ 立即领取':canClaim?'✓ 已领取':'倒计时中';
+      const canClaim=st==='claim'||st==='over'||st==='new';
+      const btnText=st==='new'?'✓ 首次领取':st==='over'?'⚠ 立即领取':canClaim?'✓ 已领取':'倒计时中';
       const gi=a._idx!==undefined?data.currentGroup:data.groups.findIndex(g=>g.accounts.some(x=>x.id===a.id));
       const idx=a._idx!==undefined?a._idx:data.groups[gi]?.accounts.findIndex(x=>x.id===a.id)||0;
       const isOnlineToday=a.lastOnlineTime&&new Date(a.lastOnlineTime).toDateString()===new Date().toDateString();
@@ -556,8 +560,8 @@ function render(){
   const dots=document.getElementById('groupDots');
   dots.innerHTML=data.groups.map((g,i)=>{
     let cls='group-dot';if(i===data.currentGroup)cls+=' active';
-    const hasClaim=g.accounts.some(a=>getStatus(a)==='claim');const hasOver=g.accounts.some(a=>getStatus(a)==='over');
-    if(hasOver)cls+=' has-over';else if(hasClaim)cls+=' has-claim';else if(g.accounts.length>0)cls+=' all-wait';else cls+=' empty';
+    const hasClaim=g.accounts.some(a=>getStatus(a)==='claim');const hasOver=g.accounts.some(a=>getStatus(a)==='over');const hasNew=g.accounts.some(a=>getStatus(a)==='new');
+    if(hasOver)cls+=' has-over';else if(hasNew)cls+=' has-new';else if(hasClaim)cls+=' has-claim';else if(g.accounts.length>0)cls+=' all-wait';else cls+=' empty';
     return `<div class="${cls}" onclick="data.currentGroup=${i};saveData();render()" title="${g.name}"></div>`;
   }).join('');
   // stats bar
