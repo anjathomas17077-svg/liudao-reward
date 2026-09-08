@@ -115,6 +115,12 @@ select.tool-select{padding:6px 8px;border:1px solid rgba(255,255,255,.15);border
 .sound-toggle{position:fixed;bottom:12px;right:12px;width:40px;height:40px;border-radius:50%;border:2px solid var(--accent);background:var(--card);color:var(--accent);font-size:18px;cursor:pointer;z-index:100;display:flex;align-items:center;justify-content:center;transition:all .2s}
 .sound-toggle.on{background:var(--accent);color:#fff}
 .sound-toggle.on:hover{background:#c73652}
+.wxpusher-status{display:flex;align-items:center;gap:6px;font-size:11px;margin-top:8px;padding:6px 10px;border-radius:8px;background:rgba(255,255,255,.05)}
+.wxpusher-status.connected{color:var(--green)}
+.wxpusher-status.disconnected{color:var(--text2)}
+.wxpusher-status.error{color:var(--red)}
+.wxpusher-help{font-size:11px;color:var(--text2);line-height:1.6;margin-top:8px;padding:8px;background:rgba(255,255,255,.03);border-radius:8px}
+.wxpusher-help b{color:var(--accent)}
 @media(max-width:360px){.cards-grid{grid-template-columns:1fr;gap:8px}.card-timer{font-size:18px}}
 </style>
 </head>
@@ -142,6 +148,7 @@ select.tool-select{padding:6px 8px;border:1px solid rgba(255,255,255,.15);border
     <button class="btn btn-secondary btn-sm" onclick="openBatchModal()">📋批量添加</button>
     <button class="btn btn-secondary btn-sm" onclick="toggleStats()">📊统计</button>
     <button class="btn btn-secondary btn-sm" onclick="openHistoryModal()">📜记录</button>
+    <button class="btn btn-secondary btn-sm" onclick="openWxPusherModal()">📲微信推送</button>
   </div>
 </div>
 <div class="stats-bar">
@@ -210,6 +217,39 @@ select.tool-select{padding:6px 8px;border:1px solid rgba(255,255,255,.15);border
     <div class="modal-actions">
       <button class="btn btn-secondary" onclick="closeHistoryModal()">关闭</button>
       <button class="btn btn-secondary" onclick="clearHistory()">清空记录</button>
+    </div>
+  </div>
+</div>
+
+<!-- WxPusher Modal -->
+<div class="modal-overlay" id="wxpusherOverlay">
+  <div class="modal">
+    <h2>📲 微信推送设置</h2>
+    <div class="form-group"><label>SPT令牌</label><input id="fSpt" placeholder="SPT_xxxxxxxx" oninput="saveWxPusherConfig()"></div>
+    <div class="form-group"><label>推送模式</label>
+      <select id="fWxMode" onchange="saveWxPusherConfig()">
+        <option value="simple">极简推送（SPT令牌，推给自己）</option>
+        <option value="standard">标准推送（appToken+UID，推给多人）</option>
+      </select>
+    </div>
+    <div id="standardFields" style="display:none">
+      <div class="form-group"><label>appToken</label><input id="fAppToken" placeholder="AT_xxxxxxxx" oninput="saveWxPusherConfig()"></div>
+      <div class="form-group"><label>UID（多个用逗号分隔）</label><input id="fUids" placeholder="UID_xxxx,UID_yyyy" oninput="saveWxPusherConfig()"></div>
+    </div>
+    <div class="form-group"><label>推送间隔（分钟）</label><input id="fWxInterval" type="number" min="1" max="60" value="5" oninput="saveWxPusherConfig()"></div>
+    <div class="wxpusher-status" id="wxpusherStatus"><span>⚫ 未配置</span></div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeWxPusherModal()">关闭</button>
+      <button class="btn btn-green" onclick="testWxPusher()">🧪 测试推送</button>
+    </div>
+    <div class="wxpusher-help">
+      <b>极简推送（推荐）：</b><br>
+      1. 微信扫码关注「WxPusher消息推送平台」公众号<br>
+      2. 访问 <b>https://wxpusher.zjiecode.com/admin</b><br>
+      3. 创建应用 → 获取SPT令牌<br>
+      4. 将SPT令牌填入上方输入框<br><br>
+      <b>标准推送：</b>需要appToken和接收者UID，可推给多人<br><br>
+      <b>推送规则：</b>仅当有账号可领取时推送，按设定间隔汇总发送
     </div>
   </div>
 </div>
@@ -512,18 +552,123 @@ function handleImport(e){
   }catch(err){toast('导入失败')}};reader.readAsText(file);e.target.value='';
 }
 
+/* ===== WXPUSHER ===== */
+const WXP_STORAGE='liudao_wxpusher';
+let wxConfig={spt:'',mode:'simple',appToken:'',uids:'',interval:5};
+let wxLastSend=0; // 上次推送时间戳
+let wxPendingNotified=new Set(); // 已通过wx通知过的账号id(本轮)
+
+function loadWxPusherConfig(){
+  try{const s=localStorage.getItem(WXP_STORAGE);if(s)wxConfig=JSON.parse(s)}catch(e){}
+  if(!wxConfig.interval)wxConfig.interval=5;
+}
+function saveWxPusherConfig(){
+  wxConfig.spt=document.getElementById('fSpt').value.trim();
+  wxConfig.mode=document.getElementById('fWxMode').value;
+  wxConfig.appToken=document.getElementById('fAppToken').value.trim();
+  wxConfig.uids=document.getElementById('fUids').value.trim();
+  wxConfig.interval=parseInt(document.getElementById('fWxInterval').value)||5;
+  document.getElementById('standardFields').style.display=wxConfig.mode==='standard'?'block':'none';
+  localStorage.setItem(WXP_STORAGE,JSON.stringify(wxConfig));
+  updateWxPusherStatus();
+}
+function updateWxPusherStatus(){
+  const el=document.getElementById('wxpusherStatus');
+  if(!el)return;
+  const hasSpt=wxConfig.mode==='simple'&&wxConfig.spt;
+  const hasStd=wxConfig.mode==='standard'&&wxConfig.appToken&&wxConfig.uids;
+  if(hasSpt||hasStd){
+    el.className='wxpusher-status connected';
+    el.innerHTML='<span>🟢 已配置 · '+(wxConfig.mode==='simple'?'极简推送':'标准推送')+' · 间隔'+wxConfig.interval+'分钟</span>';
+  }else{
+    el.className='wxpusher-status disconnected';
+    el.innerHTML='<span>⚫ 未配置</span>';
+  }
+}
+function isWxPusherReady(){
+  if(wxConfig.mode==='simple')return!!wxConfig.spt;
+  return!!(wxConfig.appToken&&wxConfig.uids);
+}
+async function sendWxPusher(content){
+  if(!isWxPusherReady())return false;
+  try{
+    let body;
+    if(wxConfig.mode==='simple'){
+      body={spt:wxConfig.spt,content:content,contentType:1};
+    }else{
+      const uidList=wxConfig.uids.split(/[,，\s]+/).filter(u=>u.trim());
+      body={appToken:wxConfig.appToken,content:content,contentType:1,uids:uidList};
+    }
+    const resp=await fetch('https://wxpusher.zjiecode.com/api/send/message',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(body)
+    });
+    const result=await resp.json();
+    return result.code===1000;
+  }catch(e){
+    console.error('WxPusher推送失败:',e);
+    return false;
+  }
+}
+async function testWxPusher(){
+  if(!isWxPusherReady()){toast('请先配置推送参数');return}
+  toast('正在发送测试推送...');
+  const ok=await sendWxPusher('🔔 六道轮回·领奖助手\n\n这是一条测试推送，如果你在微信中收到此消息，说明推送配置成功！\n\n⏰ 当账号可领取银锭时，将自动推送提醒。');
+  if(ok)toast('✅ 测试推送已发送，请查看微信');
+  else toast('❌ 推送失败，请检查配置或网络');
+}
+function openWxPusherModal(){
+  loadWxPusherConfig();
+  document.getElementById('fSpt').value=wxConfig.spt||'';
+  document.getElementById('fWxMode').value=wxConfig.mode||'simple';
+  document.getElementById('fAppToken').value=wxConfig.appToken||'';
+  document.getElementById('fUids').value=wxConfig.uids||'';
+  document.getElementById('fWxInterval').value=wxConfig.interval||5;
+  document.getElementById('standardFields').style.display=wxConfig.mode==='standard'?'block':'none';
+  updateWxPusherStatus();
+  document.getElementById('wxpusherOverlay').classList.add('active');
+}
+function closeWxPusherModal(){document.getElementById('wxpusherOverlay').classList.remove('active')}
+
 /* ===== NOTIFICATION ===== */
 function requestNotification(){if('Notification'in window&&Notification.permission==='default')Notification.requestPermission()}
 function checkNotifications(){
   if(!soundOn)return;
+  let wxClaimable=[]; // 收集需要微信推送的账号
   for(const g of data.groups)for(const a of g.accounts){
     const st=getStatus(a);
     if((st==='claim'||st==='over')&&!a._notified){
       a._notified=true;playSound();vibrate();
       if('Notification'in window&&Notification.permission==='granted')
         new Notification('六道轮回·领奖提醒',{body:`${a.phone} - ${a.ninja} 可领取银锭！`});
+      // 收集需要微信推送的账号（未推送过的）
+      if(isWxPusherReady()&&!wxPendingNotified.has(a.id)){
+        wxClaimable.push(a);
+        wxPendingNotified.add(a.id);
+      }
     }
-    if(st==='wait')a._notified=false;
+    if(st==='wait'){a._notified=false;wxPendingNotified.delete(a.id)}
+  }
+  // WxPusher批量推送（节流）
+  if(wxClaimable.length>0){
+    const now=Date.now();
+    const intervalMs=wxConfig.interval*60*1000;
+    if(now-wxLastSend>=intervalMs){
+      wxLastSend=now;
+      // 构建推送内容
+      let msg='🔔 六道轮回·领奖提醒\n\n';
+      msg+='以下账号可领取银锭：\n\n';
+      wxClaimable.forEach((a,i)=>{
+        const st=getStatus(a);
+        const prefix=st==='over'?'⚠️过期':'✅可领';
+        msg+=`${i+1}. ${prefix} ${a.phone} ${a.ninja}\n`;
+        if(a.dailySilver)msg+=`   🪙${a.dailySilver}银锭/日\n`;
+      });
+      msg+=`\n⏰ 共${wxClaimable.length}个账号待领取`;
+      sendWxPusher(msg).then(ok=>{
+        if(ok)console.log('WxPusher推送成功');
+      });
+    }
   }
 }
 
@@ -550,7 +695,7 @@ document.getElementById('groupNav').addEventListener('touchend',e=>{
 setInterval(render,1000);
 
 /* ===== INIT ===== */
-loadData();render();requestNotification();
+loadData();loadWxPusherConfig();render();requestNotification();
 if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>
