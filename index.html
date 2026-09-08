@@ -149,6 +149,7 @@ select.tool-select{padding:6px 8px;border:1px solid rgba(255,255,255,.15);border
     <button class="btn btn-secondary btn-sm" onclick="toggleStats()">📊统计</button>
     <button class="btn btn-secondary btn-sm" onclick="openHistoryModal()">📜记录</button>
     <button class="btn btn-secondary btn-sm" onclick="openWxPusherModal()">📲微信推送</button>
+    <button class="btn btn-secondary btn-sm" onclick="syncToGitHub()">☁️同步</button>
   </div>
 </div>
 <div class="stats-bar">
@@ -236,20 +237,51 @@ select.tool-select{padding:6px 8px;border:1px solid rgba(255,255,255,.15);border
       <div class="form-group"><label>appToken</label><input id="fAppToken" placeholder="AT_xxxxxxxx" oninput="saveWxPusherConfig()"></div>
       <div class="form-group"><label>UID（多个用逗号分隔）</label><input id="fUids" placeholder="UID_xxxx,UID_yyyy" oninput="saveWxPusherConfig()"></div>
     </div>
-    <div class="form-group"><label>推送间隔（分钟）</label><input id="fWxInterval" type="number" min="1" max="60" value="5" oninput="saveWxPusherConfig()"></div>
     <div class="wxpusher-status" id="wxpusherStatus"><span>⚫ 未配置</span></div>
     <div class="modal-actions">
       <button class="btn btn-secondary" onclick="closeWxPusherModal()">关闭</button>
       <button class="btn btn-green" onclick="testWxPusher()">🧪 测试推送</button>
     </div>
     <div class="wxpusher-help">
-      <b>极简推送（推荐）：</b><br>
+      <b>☁️ 后台自动推送（无需打开页面）</b><br>
+      配置GitHub Actions定时任务，每10分钟自动检查并推送。<br><br>
+      <b>步骤：</b><br>
+      1. 点击工具栏「☁️同步」按钮，配置GitHub Token<br>
+      2. 首次同步会自动上传data.json到仓库<br>
+      3. 在GitHub仓库 → Settings → Secrets中添加：<br>
+      &nbsp;&nbsp;• <b>WXPUSHER_SPT</b> = 你的SPT令牌<br>
+      4. 完成！Actions每10分钟自动检查推送<br><br>
+      <b>极简推送配置：</b><br>
       1. 微信扫码关注「WxPusher消息推送平台」公众号<br>
       2. 访问 <b>https://wxpusher.zjiecode.com/admin</b><br>
       3. 创建应用 → 获取SPT令牌<br>
-      4. 将SPT令牌填入上方输入框<br><br>
-      <b>标准推送：</b>需要appToken和接收者UID，可推给多人<br><br>
-      <b>推送规则：</b>仅当有账号可领取时推送，按设定间隔汇总发送
+      4. 填入上方输入框（前端推送）或仓库Secret（后台推送）<br><br>
+      <b>标准推送：</b>需要appToken和UID，可推给多人
+    </div>
+  </div>
+</div>
+
+<!-- GitHub Sync Modal -->
+<div class="modal-overlay" id="githubOverlay">
+  <div class="modal">
+    <h2>☁️ GitHub同步设置</h2>
+    <div class="form-group"><label>GitHub Token</label><input id="fGithubToken" type="password" placeholder="ghp_xxxxxxxx" oninput="saveGithubConfig()"></div>
+    <div class="form-group"><label>仓库</label><input id="fGithubRepo" placeholder="用户名/仓库名" oninput="saveGithubConfig()"></div>
+    <div class="wxpusher-status" id="githubStatus"><span>⚫ 未配置</span></div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeGithubModal()">关闭</button>
+      <button class="btn btn-primary" onclick="syncToGitHub()">⬆️ 立即同步</button>
+    </div>
+    <div class="wxpusher-help">
+      <b>配置步骤：</b><br>
+      1. 访问 <b>https://github.com/settings/tokens</b><br>
+      2. 点击「Generate new token (classic)」<br>
+      3. 勾选 <b>repo</b> 权限，生成Token<br>
+      4. 将Token和仓库路径填入上方<br><br>
+      <b>仓库路径格式：</b>用户名/仓库名<br>
+      例如：anjathomas17077-svg/liudao-reward<br><br>
+      <b>同步内容：</b>账号数据(data.json)→用于GitHub Actions定时检查推送<br><br>
+      <b>⚠️ Token安全：</b>Token仅保存在本地浏览器，不会上传到第三方
     </div>
   </div>
 </div>
@@ -630,6 +662,75 @@ function openWxPusherModal(){
 }
 function closeWxPusherModal(){document.getElementById('wxpusherOverlay').classList.remove('active')}
 
+/* ===== GITHUB SYNC ===== */
+const GH_STORAGE='liudao_github';
+let ghConfig={token:'',repo:''};
+
+function loadGithubConfig(){
+  try{const s=localStorage.getItem(GH_STORAGE);if(s)ghConfig=JSON.parse(s)}catch(e){}
+}
+function saveGithubConfig(){
+  ghConfig.token=document.getElementById('fGithubToken').value.trim();
+  ghConfig.repo=document.getElementById('fGithubRepo').value.trim();
+  localStorage.setItem(GH_STORAGE,JSON.stringify(ghConfig));
+  updateGithubStatus();
+}
+function updateGithubStatus(){
+  const el=document.getElementById('githubStatus');
+  if(!el)return;
+  if(ghConfig.token&&ghConfig.repo){
+    el.className='wxpusher-status connected';
+    el.innerHTML='<span>🟢 已配置 · '+ghConfig.repo+'</span>';
+  }else{
+    el.className='wxpusher-status disconnected';
+    el.innerHTML='<span>⚫ 未配置</span>';
+  }
+}
+function openGithubModal(){
+  loadGithubConfig();
+  document.getElementById('fGithubToken').value=ghConfig.token||'';
+  document.getElementById('fGithubRepo').value=ghConfig.repo||'';
+  updateGithubStatus();
+  document.getElementById('githubOverlay').classList.add('active');
+}
+function closeGithubModal(){document.getElementById('githubOverlay').classList.remove('active')}
+
+async function syncToGitHub(){
+  loadGithubConfig();
+  if(!ghConfig.token||!ghConfig.repo){openGithubModal();toast('请先配置GitHub Token和仓库');return}
+  toast('正在同步到GitHub...');
+  try{
+    // 准备数据（去掉内部标记）
+    const syncData=JSON.parse(JSON.stringify(data));
+    for(const g of syncData.groups)for(const a of g.accounts){delete a._notified}
+    const content=btoa(unescape(encodeURIComponent(JSON.stringify(syncData,null,2))));
+    // 检查文件是否存在
+    let sha=null;
+    try{
+      const checkResp=await fetch(`https://api.github.com/repos/${ghConfig.repo}/contents/data.json`,{
+        headers:{'Authorization':'token '+ghConfig.token,'Accept':'application/vnd.github.v3+json'}
+      });
+      if(checkResp.ok){const checkData=await checkResp.json();sha=checkData.sha}
+    }catch(e){}
+    // 上传/更新文件
+    const body={message:'🔄 同步账号数据 '+new Date().toLocaleString('zh-CN'),content:content};
+    if(sha)body.sha=sha;
+    const resp=await fetch(`https://api.github.com/repos/${ghConfig.repo}/contents/data.json`,{
+      method:'PUT',
+      headers:{'Authorization':'token '+ghConfig.token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},
+      body:JSON.stringify(body)
+    });
+    if(resp.ok){
+      toast('✅ 同步成功！GitHub Actions将每10分钟自动检查推送');
+    }else{
+      const err=await resp.json();
+      toast('❌ 同步失败: '+(err.message||resp.status));
+    }
+  }catch(e){
+    toast('❌ 同步失败: '+e.message);
+  }
+}
+
 /* ===== NOTIFICATION ===== */
 function requestNotification(){if('Notification'in window&&Notification.permission==='default')Notification.requestPermission()}
 function checkNotifications(){
@@ -695,7 +796,7 @@ document.getElementById('groupNav').addEventListener('touchend',e=>{
 setInterval(render,1000);
 
 /* ===== INIT ===== */
-loadData();loadWxPusherConfig();render();requestNotification();
+loadData();loadWxPusherConfig();loadGithubConfig();render();requestNotification();
 if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>

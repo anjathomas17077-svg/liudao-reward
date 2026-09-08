@@ -1,0 +1,24 @@
+name: 领奖提醒检查
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'  # 每10分钟运行一次
+  workflow_dispatch:  # 支持手动触发
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 设置 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 检查并推送提醒
+        env:
+          WXPUSHER_SPT: ${{ secrets.WXPUSHER_SPT }}
+          WXPUSHER_APP_TOKEN: ${{ secrets.WXPUSHER_APP_TOKEN }}
+          WXPUSHER_UIDS: ${{ secrets.WXPUSHER_UIDS }}
+        run: node check.js
