@@ -1,0 +1,2914 @@
+{
+  "groups": [
+    {
+      "id": "g_1787599689003_418h",
+      "name": "第1组",
+      "accounts": [
+        {
+          "id": "a_1787599705096_fh2a",
+          "phone": "16684764178",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "wind",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788123964922,
+          "lastOnlineTime": 1788880701245
+        },
+        {
+          "id": "a_1787599916297_a692",
+          "phone": "17119520580",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "water",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788123964922,
+          "lastOnlineTime": 1788123967685
+        },
+        {
+          "id": "a_1787599828494_w3c2",
+          "phone": "16291490490",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "wind",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788123964922,
+          "lastOnlineTime": 1788866205436
+        },
+        {
+          "id": "a_1788121994091_1fdd",
+          "phone": "15135493946",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 1,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "wind",
+          "dailySilver": 557,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788868024233,
+          "lastOnlineTime": 1788868022809
+        }
+      ]
+    },
+    {
+      "id": "g_1787599927908_eog9",
+      "name": "第2组",
+      "accounts": [
+        {
+          "id": "a_1787599998948_4mts",
+          "phone": "13467132769",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "lastClaimTime": 1788854184949,
+          "lastOnlineTime": 1788195275597
+        },
+        {
+          "id": "a_1787600006557_87y1",
+          "phone": "13275802863",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "lastClaimTime": 1788854184949,
+          "lastOnlineTime": 1788195275597
+        }
+      ]
+    },
+    {
+      "id": "g_1787678774171_lgo3",
+      "name": "第3组",
+      "accounts": [
+        {
+          "id": "a_1787678806005_f7in",
+          "phone": "16275849373",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "lastClaimTime": 1788425920016,
+          "lastOnlineTime": 1788849078297
+        },
+        {
+          "id": "a_1787678814812_4ofz",
+          "phone": "16291491186",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "lastClaimTime": 1788425920016,
+          "lastOnlineTime": 1788849078297
+        },
+        {
+          "id": "a_1787678793470_u9p0",
+          "phone": "17026000504",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "earth",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788425920016,
+          "lastOnlineTime": 1788849078297
+        },
+        {
+          "id": "a_1787678798410_pw2t",
+          "phone": "17106653693",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "earth",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788425920016,
+          "lastOnlineTime": 1788849078297
+        }
+      ]
+    },
+    {
+      "id": "g_1787678885660_8n52",
+      "name": "第4组",
+      "accounts": [
+        {
+          "id": "a_1787678888356_dpoh",
+          "phone": "16275848920",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "earth",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788342013058,
+          "lastOnlineTime": 1788851800344
+        },
+        {
+          "id": "a_1787678892281_4lqk",
+          "phone": "17026000045",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "water",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788342013058,
+          "lastOnlineTime": 1788851800344
+        },
+        {
+          "id": "a_1787678897485_w5t4",
+          "phone": "16254221438",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "water",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788342013058,
+          "lastOnlineTime": 1788851800344
+        },
+        {
+          "id": "a_1787678902851_ogf5",
+          "phone": "17193417519",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "earth",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788342013058,
+          "lastOnlineTime": 1788851800344
+        }
+      ]
+    },
+    {
+      "id": "g_1787684823836_vllj",
+      "name": "第5组",
+      "accounts": [
+        {
+          "id": "a_1787684849015_maiw",
+          "phone": "16290229097",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "lastClaimTime": 1788345304181,
+          "lastOnlineTime": 1788853794150
+        },
+        {
+          "id": "a_1787684854551_y9gf",
+          "phone": "16291293578",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "water",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788345304181,
+          "lastOnlineTime": 1788853794150
+        },
+        {
+          "id": "a_1787684861482_1xnm",
+          "phone": "16266208519",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "wind",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788345304181,
+          "lastOnlineTime": 1788853794150
+        },
+        {
+          "id": "a_1787684866425_546q",
+          "phone": "16284232791",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "earth",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788345304181,
+          "lastOnlineTime": 1788853794150
+        }
+      ]
+    },
+    {
+      "id": "g_1787711117334_vze5",
+      "name": "第6组",
+      "accounts": [
+        {
+          "id": "a_1787711217010_q7tm",
+          "phone": "17009152638",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "lastClaimTime": 1788348543835,
+          "lastOnlineTime": 1788857853723
+        },
+        {
+          "id": "a_1787711659205_mk6c",
+          "phone": "17072724189",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "lastClaimTime": 1788348543835,
+          "lastOnlineTime": 1788857853723
+        },
+        {
+          "id": "a_1787711647012_vsvn",
+          "phone": "16290220443",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "wind",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788348543835,
+          "lastOnlineTime": 1788857853723
+        },
+        {
+          "id": "a_1787715456385_layj",
+          "phone": "16284232796",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "wind",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788348543835,
+          "lastOnlineTime": 1788857853723
+        }
+      ]
+    },
+    {
+      "id": "g_1787715464932_xk2c",
+      "name": "第7组",
+      "accounts": [
+        {
+          "id": "a_1787715546638_l547",
+          "phone": "17026783031",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "lastClaimTime": 1788350160174,
+          "lastOnlineTime": 1788847196548
+        },
+        {
+          "id": "a_1787715550692_u0v1",
+          "phone": "16261661285",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "lastClaimTime": 1788350160174,
+          "lastOnlineTime": 1788847196548
+        },
+        {
+          "id": "a_1787715561054_a7n9",
+          "phone": "17106655995",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "lastClaimTime": 1788350160174,
+          "lastOnlineTime": 1788847196548
+        },
+        {
+          "id": "a_1787715555613_2afw",
+          "phone": "16291490493",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "water",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788350160174,
+          "lastOnlineTime": 1788847196548
+        }
+      ]
+    },
+    {
+      "id": "g_1787754306314_j5a4",
+      "name": "第8组",
+      "accounts": [
+        {
+          "id": "a_1787754311769_fsoe",
+          "phone": "16284232767",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "wind",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788271047998,
+          "lastOnlineTime": 1788860111619
+        },
+        {
+          "id": "a_1787754323950_bejb",
+          "phone": "16294818084",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "earth",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788271047998,
+          "lastOnlineTime": 1788860111619
+        },
+        {
+          "id": "a_1787754328766_c1x8",
+          "phone": "17026782197",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "无流派",
+          "lastClaimTime": 1788271047998,
+          "lastOnlineTime": 1788860111619
+        },
+        {
+          "id": "a_1787819474371_0yjs",
+          "phone": "16289609716",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "earth",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788271047998,
+          "lastOnlineTime": 1788860111619
+        }
+      ]
+    },
+    {
+      "id": "g_1787759133465_1w81",
+      "name": "第9组",
+      "accounts": [
+        {
+          "id": "a_1787759137490_xoku",
+          "phone": "17021888476",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "earth",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788272786677,
+          "lastOnlineTime": 1788877087762
+        },
+        {
+          "id": "a_1787759144475_fq32",
+          "phone": "16214888024",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "water",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788272786677,
+          "lastOnlineTime": 1788877087762
+        },
+        {
+          "id": "a_1787759158416_gz3o",
+          "phone": "17021880346",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788272786677,
+          "lastOnlineTime": 1788877087762
+        },
+        {
+          "id": "a_1787759162677_t77f",
+          "phone": "16261660594",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "water",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "无",
+          "lastClaimTime": 1788272786677,
+          "lastOnlineTime": 1788877087762
+        }
+      ]
+    },
+    {
+      "id": "g_1787825256729_4zj3",
+      "name": "第10组",
+      "accounts": [
+        {
+          "id": "a_1787825260666_w88g",
+          "phone": "17193417570",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "wind",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788274621231,
+          "lastOnlineTime": 1788890383920
+        },
+        {
+          "id": "a_1787825264757_1y8g",
+          "phone": "16254221430",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "earth",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788274621231,
+          "lastOnlineTime": 1788890383920
+        },
+        {
+          "id": "a_1787825269644_elqr",
+          "phone": "16294278396",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "earth",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788274621231,
+          "lastOnlineTime": 1788890383920
+        },
+        {
+          "id": "a_1787825279893_6k2g",
+          "phone": "17128712484",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788274621231,
+          "lastOnlineTime": 1788890383920
+        }
+      ]
+    },
+    {
+      "id": "g_1787834669460_6rmn",
+      "name": "第11组",
+      "accounts": [
+        {
+          "id": "a_1787834676405_5vbe",
+          "phone": "16275849403",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788353593891,
+          "lastOnlineTime": 1788553027281
+        },
+        {
+          "id": "a_1787834676413_gwxb",
+          "phone": "17114749847",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788353593891,
+          "lastOnlineTime": 1788553027281
+        },
+        {
+          "id": "a_1787834676413_luyo",
+          "phone": "16261660985",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788353593891,
+          "lastOnlineTime": 1788553027281
+        },
+        {
+          "id": "a_1787834676413_ze2h",
+          "phone": "16284232807",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "一个金装备",
+          "lastClaimTime": 1788353593891,
+          "lastOnlineTime": 1788553027281
+        }
+      ]
+    },
+    {
+      "id": "g_1787850573133_qhkp",
+      "name": "第12组",
+      "accounts": [
+        {
+          "id": "a_1787850575607_jm17",
+          "phone": "17119520611",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788277092593,
+          "lastOnlineTime": 1788446706039
+        },
+        {
+          "id": "a_1787850575608_581i",
+          "phone": "17082784705",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788277092593,
+          "lastOnlineTime": 1788446706039
+        },
+        {
+          "id": "a_1787850575609_5afj",
+          "phone": "17082788409",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788277092593,
+          "lastOnlineTime": 1788446706039
+        },
+        {
+          "id": "a_1787850575609_dik3",
+          "phone": "16261660839",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788277092593,
+          "lastOnlineTime": 1788446706039
+        }
+      ]
+    },
+    {
+      "id": "g_1787912281958_ibxo",
+      "name": "第13组",
+      "accounts": [
+        {
+          "id": "a_1787912319138_c2hh",
+          "phone": "16275849212",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788277537196,
+          "lastOnlineTime": 1788449309488
+        },
+        {
+          "id": "a_1787912319138_cnim",
+          "phone": "16261661317",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788277537196,
+          "lastOnlineTime": 1788449309488
+        },
+        {
+          "id": "a_1787912319138_fmls",
+          "phone": "16275849291",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788277537196,
+          "lastOnlineTime": 1788449309488
+        },
+        {
+          "id": "a_1787912319138_sf1k",
+          "phone": "16261662151",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788277537196,
+          "lastOnlineTime": 1788449309488
+        }
+      ]
+    },
+    {
+      "id": "g_1787928706464_msj2",
+      "name": "第14组",
+      "accounts": [
+        {
+          "id": "a_1787928709361_tm9k",
+          "phone": "16261660696",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788277870056,
+          "lastOnlineTime": 1788356024307
+        },
+        {
+          "id": "a_1787928709362_smlr",
+          "phone": "16284232729",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788277870056,
+          "lastOnlineTime": 1788356024307
+        },
+        {
+          "id": "a_1787928709362_ziqd",
+          "phone": "16266347086",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788277870056,
+          "lastOnlineTime": 1788356024307
+        },
+        {
+          "id": "a_1787928709362_c2ok",
+          "phone": "16284232821",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788277870056,
+          "lastOnlineTime": 1788356024307
+        }
+      ]
+    },
+    {
+      "id": "g_1787937443854_d6lm",
+      "name": "第15组",
+      "accounts": [
+        {
+          "id": "a_1787937447081_uuog",
+          "phone": "17116989724",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788278145302,
+          "lastOnlineTime": 1788356819749
+        },
+        {
+          "id": "a_1787937447083_ay5w",
+          "phone": "16275849431",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788278145302,
+          "lastOnlineTime": 1788356819749
+        },
+        {
+          "id": "a_1787937447083_388x",
+          "phone": "17072724401",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788278145302,
+          "lastOnlineTime": 1788356819749
+        },
+        {
+          "id": "a_1787947571288_jg8h",
+          "phone": "16261660874",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788278145302,
+          "lastOnlineTime": 1788356819749
+        }
+      ]
+    },
+    {
+      "id": "g_1787947389029_f6cy",
+      "name": "第16组",
+      "accounts": [
+        {
+          "id": "a_1787947396831_q5o0",
+          "phone": "16261661145",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788191815218,
+          "lastOnlineTime": 1788358001834
+        },
+        {
+          "id": "a_1787947396832_m1oj",
+          "phone": "16261660517",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788191815218,
+          "lastOnlineTime": 1788358001834
+        },
+        {
+          "id": "a_1787947396832_i143",
+          "phone": "16261660337",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788191815218,
+          "lastOnlineTime": 1788358001834
+        },
+        {
+          "id": "a_1787947594007_3erc",
+          "phone": "16261661427",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788191815218,
+          "lastOnlineTime": 1788358001834
+        }
+      ]
+    },
+    {
+      "id": "g_1787950720874_r60t",
+      "name": "第17组",
+      "accounts": [
+        {
+          "id": "a_1787950725148_me5p",
+          "phone": "16261661681",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788109512871,
+          "lastOnlineTime": 1788360708638
+        },
+        {
+          "id": "a_1787950725149_jhrg",
+          "phone": "16261661821",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788109512871,
+          "lastOnlineTime": 1788360708638
+        },
+        {
+          "id": "a_1787950725149_c63h",
+          "phone": "16261662119",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788109512871,
+          "lastOnlineTime": 1788360708638
+        },
+        {
+          "id": "a_1787950725149_5bec",
+          "phone": "16261661790",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788109512871,
+          "lastOnlineTime": 1788360708638
+        }
+      ]
+    },
+    {
+      "id": "g_1788000287133_bo5d",
+      "name": "第18组",
+      "accounts": [
+        {
+          "id": "a_1788000289677_bmt0",
+          "phone": "17157241853",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788112476092,
+          "lastOnlineTime": 1788362280941
+        },
+        {
+          "id": "a_1788000289679_s5u7",
+          "phone": "19187795053",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788112476092,
+          "lastOnlineTime": 1788362280941
+        },
+        {
+          "id": "a_1788000289679_ln38",
+          "phone": "18346398725",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788112476092,
+          "lastOnlineTime": 1788362280941
+        },
+        {
+          "id": "a_1788000289679_21w1",
+          "phone": "13359493167",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788112476092,
+          "lastOnlineTime": 1788362280941
+        }
+      ]
+    },
+    {
+      "id": "g_1788005392851_ncli",
+      "name": "第19组",
+      "accounts": [
+        {
+          "id": "a_1788036160270_6jbp",
+          "phone": "13422305313",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788118277167,
+          "lastOnlineTime": 1788118276587
+        },
+        {
+          "id": "a_1788036160271_abik",
+          "phone": "15323375570",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788118277167,
+          "lastOnlineTime": 1788118276587
+        },
+        {
+          "id": "a_1788036160271_v3hh",
+          "phone": "13346679078",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788118277167,
+          "lastOnlineTime": 1788118276587
+        },
+        {
+          "id": "a_1788036160271_v3g9",
+          "phone": "13390139521",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "fire",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1788118277167,
+          "lastOnlineTime": 1788118276587
+        }
+      ]
+    },
+    {
+      "id": "g_1788042799233_2v9f",
+      "name": "第20组",
+      "accounts": []
+    }
+  ],
+  "currentGroup": 0,
+  "history": [
+    {
+      "phone": "15135493946",
+      "ninja": "未设置",
+      "silver": 557,
+      "time": 1788868024233
+    },
+    {
+      "phone": "13275802863",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788854184949
+    },
+    {
+      "phone": "13467132769",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788854184949
+    },
+    {
+      "phone": "13275802863",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788767534427
+    },
+    {
+      "phone": "13467132769",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788767534427
+    },
+    {
+      "phone": "13275802863",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788680825280
+    },
+    {
+      "phone": "13467132769",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788680824814
+    },
+    {
+      "phone": "15135493946",
+      "ninja": "未设置",
+      "silver": 557,
+      "time": 1788600938999
+    },
+    {
+      "phone": "15135493946",
+      "ninja": "未设置",
+      "silver": 557,
+      "time": 1788511472502
+    },
+    {
+      "phone": "17106653693",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788425920016
+    },
+    {
+      "phone": "17026000504",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788425920016
+    },
+    {
+      "phone": "16291491186",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788425920016
+    },
+    {
+      "phone": "16275849373",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788425920016
+    },
+    {
+      "phone": "16284232807",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788353593891
+    },
+    {
+      "phone": "16261660985",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788353593891
+    },
+    {
+      "phone": "17114749847",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788353593891
+    },
+    {
+      "phone": "16275849403",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788353593891
+    },
+    {
+      "phone": "16291490493",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788350160174
+    },
+    {
+      "phone": "17106655995",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788350160174
+    },
+    {
+      "phone": "16261661285",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788350160174
+    },
+    {
+      "phone": "17026783031",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788350160174
+    },
+    {
+      "phone": "16284232796",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788348543835
+    },
+    {
+      "phone": "16290220443",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788348543835
+    },
+    {
+      "phone": "17072724189",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788348543835
+    },
+    {
+      "phone": "17009152638",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788348543835
+    },
+    {
+      "phone": "16284232791",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788345304181
+    },
+    {
+      "phone": "16266208519",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788345304181
+    },
+    {
+      "phone": "16291293578",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788345304181
+    },
+    {
+      "phone": "16290229097",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788345304181
+    },
+    {
+      "phone": "17193417519",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788342013058
+    },
+    {
+      "phone": "16254221438",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788342013058
+    },
+    {
+      "phone": "17026000045",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788342013058
+    },
+    {
+      "phone": "16275848920",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788342013058
+    },
+    {
+      "phone": "17106653693",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788338874428
+    },
+    {
+      "phone": "17026000504",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788338874428
+    },
+    {
+      "phone": "16291491186",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788338874428
+    },
+    {
+      "phone": "16275849373",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788338874428
+    },
+    {
+      "phone": "16261660874",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788278145302
+    },
+    {
+      "phone": "17072724401",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788278145302
+    },
+    {
+      "phone": "16275849431",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788278145302
+    },
+    {
+      "phone": "17116989724",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788278145302
+    },
+    {
+      "phone": "16284232821",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788277870056
+    },
+    {
+      "phone": "16266347086",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788277870056
+    },
+    {
+      "phone": "16284232729",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788277870056
+    },
+    {
+      "phone": "16261660696",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788277870056
+    },
+    {
+      "phone": "16261662151",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788277537196
+    },
+    {
+      "phone": "16275849291",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788277537196
+    },
+    {
+      "phone": "16261661317",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788277537196
+    },
+    {
+      "phone": "16275849212",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788277537196
+    },
+    {
+      "phone": "16261660839",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788277092593
+    },
+    {
+      "phone": "17082788409",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788277092593
+    },
+    {
+      "phone": "17082784705",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788277092593
+    },
+    {
+      "phone": "17119520611",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788277092593
+    },
+    {
+      "phone": "17128712484",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788274621231
+    },
+    {
+      "phone": "16294278396",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788274621231
+    },
+    {
+      "phone": "16254221430",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788274621231
+    },
+    {
+      "phone": "17193417570",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788274621231
+    },
+    {
+      "phone": "16261660594",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788272786677
+    },
+    {
+      "phone": "17021880346",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788272786677
+    },
+    {
+      "phone": "16214888024",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788272786677
+    },
+    {
+      "phone": "17021888476",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788272786677
+    },
+    {
+      "phone": "16289609716",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788271047998
+    },
+    {
+      "phone": "17026782197",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788271047998
+    },
+    {
+      "phone": "16294818084",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788271047998
+    },
+    {
+      "phone": "16284232767",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788271047998
+    },
+    {
+      "phone": "16291490493",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788260800900
+    },
+    {
+      "phone": "17106655995",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788260800900
+    },
+    {
+      "phone": "16261661285",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788260800900
+    },
+    {
+      "phone": "17026783031",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788260800900
+    },
+    {
+      "phone": "16284232796",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788257536144
+    },
+    {
+      "phone": "16290220443",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788257536144
+    },
+    {
+      "phone": "17072724189",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788257536144
+    },
+    {
+      "phone": "17009152638",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788257536144
+    },
+    {
+      "phone": "16284232791",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788254298920
+    },
+    {
+      "phone": "16266208519",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788254298920
+    },
+    {
+      "phone": "16291293578",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788254298920
+    },
+    {
+      "phone": "16290229097",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788254298920
+    },
+    {
+      "phone": "17193417519",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788251143832
+    },
+    {
+      "phone": "16254221438",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788251143832
+    },
+    {
+      "phone": "17026000045",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788251143832
+    },
+    {
+      "phone": "16275848920",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788251143832
+    },
+    {
+      "phone": "17106653693",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788245125771
+    },
+    {
+      "phone": "17026000504",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788245125771
+    },
+    {
+      "phone": "16291491186",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788245125771
+    },
+    {
+      "phone": "16275849373",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788245125771
+    },
+    {
+      "phone": "13275802863",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788195275391
+    },
+    {
+      "phone": "13467132769",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788195275391
+    },
+    {
+      "phone": "16261661427",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788191815218
+    },
+    {
+      "phone": "16261660337",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788191815218
+    },
+    {
+      "phone": "16261660517",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788191815218
+    },
+    {
+      "phone": "16261661145",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788191815218
+    },
+    {
+      "phone": "16261660874",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788191055607
+    },
+    {
+      "phone": "17072724401",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788191055607
+    },
+    {
+      "phone": "16275849431",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788191055607
+    },
+    {
+      "phone": "17116989724",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788191055607
+    },
+    {
+      "phone": "16284232821",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788190331770
+    },
+    {
+      "phone": "16266347086",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788190331770
+    },
+    {
+      "phone": "16284232729",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788190331770
+    },
+    {
+      "phone": "16261660696",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788190331770
+    },
+    {
+      "phone": "16261662151",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788189351388
+    },
+    {
+      "phone": "16275849291",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788189351388
+    },
+    {
+      "phone": "16261661317",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788189351388
+    },
+    {
+      "phone": "16275849212",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788189351388
+    },
+    {
+      "phone": "16261660839",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788188618815
+    },
+    {
+      "phone": "17082788409",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788188618815
+    },
+    {
+      "phone": "17082784705",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788188618815
+    },
+    {
+      "phone": "17119520611",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788188618815
+    },
+    {
+      "phone": "16284232807",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788187326518
+    },
+    {
+      "phone": "16261660985",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788187326518
+    },
+    {
+      "phone": "17114749847",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788187326518
+    },
+    {
+      "phone": "16275849403",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788187326518
+    },
+    {
+      "phone": "17128712484",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788185819758
+    },
+    {
+      "phone": "16294278396",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788185819758
+    },
+    {
+      "phone": "16254221430",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788185819758
+    },
+    {
+      "phone": "17193417570",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788185819758
+    },
+    {
+      "phone": "16261660594",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788184100211
+    },
+    {
+      "phone": "17021880346",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788184100211
+    },
+    {
+      "phone": "16214888024",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788184100211
+    },
+    {
+      "phone": "17021888476",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788184100211
+    },
+    {
+      "phone": "16289609716",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788180505002
+    },
+    {
+      "phone": "17026782197",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788180505002
+    },
+    {
+      "phone": "16294818084",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788180505002
+    },
+    {
+      "phone": "16284232767",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788180505002
+    },
+    {
+      "phone": "17106655995",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788164862556
+    },
+    {
+      "phone": "16291490493",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788164862556
+    },
+    {
+      "phone": "16261661285",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788164862556
+    },
+    {
+      "phone": "17026783031",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788164862556
+    },
+    {
+      "phone": "16284232796",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788163897971
+    },
+    {
+      "phone": "17072724189",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788163897971
+    },
+    {
+      "phone": "16290220443",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788163897971
+    },
+    {
+      "phone": "17009152638",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788163897971
+    },
+    {
+      "phone": "16284232791",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788152281429
+    },
+    {
+      "phone": "16266208519",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788152281429
+    },
+    {
+      "phone": "16291293578",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788152281429
+    },
+    {
+      "phone": "16290229097",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788152281429
+    },
+    {
+      "phone": "17193417519",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788149491489
+    },
+    {
+      "phone": "16254221438",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788149491489
+    },
+    {
+      "phone": "17026000045",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788149491489
+    },
+    {
+      "phone": "16275848920",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788149491489
+    },
+    {
+      "phone": "16291491186",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788127140840
+    },
+    {
+      "phone": "16275849373",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788127140840
+    },
+    {
+      "phone": "17106653693",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788127140840
+    },
+    {
+      "phone": "17026000504",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788127140840
+    },
+    {
+      "phone": "17119520580",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788123964922
+    },
+    {
+      "phone": "16684764178",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788123964922
+    },
+    {
+      "phone": "16291490490",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788123964922
+    },
+    {
+      "phone": "15135493946",
+      "ninja": "未设置",
+      "silver": 557,
+      "time": 1788121995540
+    },
+    {
+      "phone": "13390139521",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788118277167
+    },
+    {
+      "phone": "13346679078",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788118277167
+    },
+    {
+      "phone": "15323375570",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788118277167
+    },
+    {
+      "phone": "13422305313",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788118277167
+    },
+    {
+      "phone": "13359493167",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788112476092
+    },
+    {
+      "phone": "18346398725",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788112476092
+    },
+    {
+      "phone": "19187795053",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788112476092
+    },
+    {
+      "phone": "17157241853",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788112476092
+    },
+    {
+      "phone": "16261661790",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788109512871
+    },
+    {
+      "phone": "16261662119",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788109512871
+    },
+    {
+      "phone": "16261661821",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788109512871
+    },
+    {
+      "phone": "16261661681",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788109512871
+    },
+    {
+      "phone": "15135493946",
+      "ninja": "未设置",
+      "silver": 400,
+      "time": 1788044418675
+    },
+    {
+      "phone": "16261660874",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788018691531
+    },
+    {
+      "phone": "17072724401",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788018691531
+    },
+    {
+      "phone": "16275849431",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788018691531
+    },
+    {
+      "phone": "17116989724",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788018691531
+    },
+    {
+      "phone": "16284232821",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788018273227
+    },
+    {
+      "phone": "16266347086",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788018273227
+    },
+    {
+      "phone": "16284232729",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788018273227
+    },
+    {
+      "phone": "16261660696",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788018273227
+    },
+    {
+      "phone": "16261662151",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788018003987
+    },
+    {
+      "phone": "16275849291",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788018003987
+    },
+    {
+      "phone": "16261661317",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788018003987
+    },
+    {
+      "phone": "16275849212",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788018003987
+    },
+    {
+      "phone": "16261660839",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788017565459
+    },
+    {
+      "phone": "17082788409",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788017565459
+    },
+    {
+      "phone": "17082784705",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788017565459
+    },
+    {
+      "phone": "17119520611",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788017565459
+    },
+    {
+      "phone": "16261660985",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788016661506
+    },
+    {
+      "phone": "17114749847",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788016661506
+    },
+    {
+      "phone": "16284232807",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788016661506
+    },
+    {
+      "phone": "16275849403",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788016661506
+    },
+    {
+      "phone": "17128712484",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788016062333
+    },
+    {
+      "phone": "16294278396",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788016062333
+    },
+    {
+      "phone": "16254221430",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788016062333
+    },
+    {
+      "phone": "17193417570",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788016062333
+    },
+    {
+      "phone": "16261660594",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788015521693
+    },
+    {
+      "phone": "17021880346",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788015521693
+    },
+    {
+      "phone": "16214888024",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788015521693
+    },
+    {
+      "phone": "17021888476",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788015521693
+    },
+    {
+      "phone": "16289609716",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788014991445
+    },
+    {
+      "phone": "17026782197",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788014991445
+    },
+    {
+      "phone": "16294818084",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788014991445
+    },
+    {
+      "phone": "16284232767",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788014991445
+    },
+    {
+      "phone": "17106655995",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788013516722
+    },
+    {
+      "phone": "16291490493",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788013516722
+    },
+    {
+      "phone": "16261661285",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788013516722
+    },
+    {
+      "phone": "17026783031",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788013516722
+    },
+    {
+      "phone": "16284232796",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788011178290
+    },
+    {
+      "phone": "17072724189",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788011178290
+    },
+    {
+      "phone": "16290220443",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788011178290
+    },
+    {
+      "phone": "17009152638",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788011178290
+    },
+    {
+      "phone": "16284232791",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788010463264
+    },
+    {
+      "phone": "16266208519",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788010463264
+    },
+    {
+      "phone": "16291293578",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788010463264
+    },
+    {
+      "phone": "16290229097",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788010463264
+    },
+    {
+      "phone": "17193417519",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788007943285
+    },
+    {
+      "phone": "16254221438",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788007943285
+    },
+    {
+      "phone": "17026000045",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788007943285
+    },
+    {
+      "phone": "16275848920",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1788007943285
+    },
+    {
+      "phone": "16291491186",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787998914742
+    },
+    {
+      "phone": "16275849373",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787998914742
+    },
+    {
+      "phone": "17106653693",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787998914742
+    },
+    {
+      "phone": "17026000504",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787998914742
+    },
+    {
+      "phone": "17119520580",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787996568758
+    },
+    {
+      "phone": "16291490490",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787996568758
+    },
+    {
+      "phone": "16684764178",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787996568758
+    },
+    {
+      "phone": "13275802863",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787993195652
+    },
+    {
+      "phone": "13467132769",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787993195652
+    },
+    {
+      "phone": "15135493946",
+      "ninja": "未设置",
+      "silver": 400,
+      "time": 1787948683142
+    },
+    {
+      "phone": "16261660839",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787911773169
+    },
+    {
+      "phone": "17082788409",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787911773169
+    },
+    {
+      "phone": "17082784705",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787911773169
+    },
+    {
+      "phone": "17119520611",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787911773169
+    },
+    {
+      "phone": "16261660985",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787910344205
+    },
+    {
+      "phone": "17114749847",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787910344205
+    },
+    {
+      "phone": "16284232807",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787910344205
+    },
+    {
+      "phone": "16275849403",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787910344205
+    },
+    {
+      "phone": "17128712484",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787908399606
+    },
+    {
+      "phone": "16294278396",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787908399606
+    },
+    {
+      "phone": "16254221430",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787908399606
+    },
+    {
+      "phone": "17193417570",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787908399606
+    },
+    {
+      "phone": "16261660594",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787902459827
+    },
+    {
+      "phone": "17021880346",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787902459827
+    },
+    {
+      "phone": "16214888024",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787902459827
+    },
+    {
+      "phone": "17021888476",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787902459827
+    },
+    {
+      "phone": "16289609716",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787900361945
+    },
+    {
+      "phone": "17026782197",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787900361945
+    },
+    {
+      "phone": "16294818084",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787900361945
+    },
+    {
+      "phone": "16284232767",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787900361945
+    },
+    {
+      "phone": "17106655995",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787898706486
+    },
+    {
+      "phone": "16291490493",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787898706486
+    },
+    {
+      "phone": "16261661285",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787898706486
+    },
+    {
+      "phone": "17026783031",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787898706486
+    },
+    {
+      "phone": "16284232796",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787897263618
+    },
+    {
+      "phone": "17072724189",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787897263618
+    },
+    {
+      "phone": "16290220443",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787897263618
+    },
+    {
+      "phone": "17009152638",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787897263618
+    },
+    {
+      "phone": "16284232791",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787896196920
+    },
+    {
+      "phone": "16266208519",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787896196920
+    },
+    {
+      "phone": "16291293578",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787896196920
+    },
+    {
+      "phone": "16290229097",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787896196920
+    },
+    {
+      "phone": "17193417519",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787895220260
+    },
+    {
+      "phone": "16254221438",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787895220260
+    },
+    {
+      "phone": "17026000045",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787895220260
+    },
+    {
+      "phone": "16275848920",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787895220260
+    },
+    {
+      "phone": "16291491186",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787894441265
+    },
+    {
+      "phone": "16275849373",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787894441265
+    },
+    {
+      "phone": "17106653693",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787894441265
+    },
+    {
+      "phone": "17026000504",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787894441265
+    },
+    {
+      "phone": "17119520580",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787893354655
+    },
+    {
+      "phone": "16291490490",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787893354655
+    },
+    {
+      "phone": "15135493946",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787893354655
+    },
+    {
+      "phone": "16684764178",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787893354655
+    },
+    {
+      "phone": "13275802863",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787891019592
+    },
+    {
+      "phone": "13467132769",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787891019592
+    },
+    {
+      "phone": "16289609716",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787819451038
+    },
+    {
+      "phone": "16284232796",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787804062994
+    },
+    {
+      "phone": "17072724189",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787804062994
+    },
+    {
+      "phone": "16290220443",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787804062994
+    },
+    {
+      "phone": "17009152638",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787804062994
+    },
+    {
+      "phone": "16284232791",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787802613345
+    },
+    {
+      "phone": "16266208519",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787802613345
+    },
+    {
+      "phone": "16291293578",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787802613345
+    },
+    {
+      "phone": "16290229097",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787802613345
+    },
+    {
+      "phone": "17193417519",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787801066505
+    },
+    {
+      "phone": "16254221438",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787801066505
+    },
+    {
+      "phone": "17026000045",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787801066505
+    },
+    {
+      "phone": "16275848920",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787801066505
+    },
+    {
+      "phone": "16291491186",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787800848067
+    },
+    {
+      "phone": "16275849373",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787800848067
+    },
+    {
+      "phone": "17106653693",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787800848067
+    },
+    {
+      "phone": "17026000504",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787800848067
+    },
+    {
+      "phone": "13275802863",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787795297929
+    },
+    {
+      "phone": "13467132769",
+      "ninja": "未设置",
+      "silver": 0,
+      "time": 1787795297929
+    }
+  ]
+}
