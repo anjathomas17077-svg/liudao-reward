@@ -599,7 +599,6 @@ function saveWxPusherConfig(){
   wxConfig.mode=document.getElementById('fWxMode').value;
   wxConfig.appToken=document.getElementById('fAppToken').value.trim();
   wxConfig.uids=document.getElementById('fUids').value.trim();
-  wxConfig.interval=parseInt(document.getElementById('fWxInterval').value)||5;
   document.getElementById('standardFields').style.display=wxConfig.mode==='standard'?'block':'none';
   localStorage.setItem(WXP_STORAGE,JSON.stringify(wxConfig));
   updateWxPusherStatus();
@@ -655,7 +654,6 @@ function openWxPusherModal(){
   document.getElementById('fWxMode').value=wxConfig.mode||'simple';
   document.getElementById('fAppToken').value=wxConfig.appToken||'';
   document.getElementById('fUids').value=wxConfig.uids||'';
-  document.getElementById('fWxInterval').value=wxConfig.interval||5;
   document.getElementById('standardFields').style.display=wxConfig.mode==='standard'?'block':'none';
   updateWxPusherStatus();
   document.getElementById('wxpusherOverlay').classList.add('active');
