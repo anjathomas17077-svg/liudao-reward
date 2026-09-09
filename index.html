@@ -710,27 +710,37 @@ async function syncToGitHub(){
     const syncData=JSON.parse(JSON.stringify(data));
     for(const g of syncData.groups)for(const a of g.accounts){delete a._notified}
     const content=btoa(unescape(encodeURIComponent(JSON.stringify(syncData,null,2))));
-    // 检查文件是否存在
-    let sha=null;
-    try{
-      const checkResp=await fetch(`https://api.github.com/repos/${ghConfig.repo}/contents/data.json`,{
-        headers:{'Authorization':'Bearer '+ghConfig.token,'Accept':'application/vnd.github.v3+json'}
+    // 最多重试3次（处理SHA不匹配）
+    for(let attempt=1;attempt<=3;attempt++){
+      // 获取当前文件SHA
+      let sha=null;
+      try{
+        const checkResp=await fetch(`https://api.github.com/repos/${ghConfig.repo}/contents/data.json`,{
+          headers:{'Authorization':'Bearer '+ghConfig.token,'Accept':'application/vnd.github.v3+json'}
+        });
+        if(checkResp.ok){const checkData=await checkResp.json();sha=checkData.sha}
+      }catch(e){}
+      // 上传/更新文件
+      const body={message:'🔄 同步账号数据 '+new Date().toLocaleString('zh-CN'),content:content};
+      if(sha)body.sha=sha;
+      const resp=await fetch(`https://api.github.com/repos/${ghConfig.repo}/contents/data.json`,{
+        method:'PUT',
+        headers:{'Authorization':'Bearer '+ghConfig.token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},
+        body:JSON.stringify(body)
       });
-      if(checkResp.ok){const checkData=await checkResp.json();sha=checkData.sha}
-    }catch(e){}
-    // 上传/更新文件
-    const body={message:'🔄 同步账号数据 '+new Date().toLocaleString('zh-CN'),content:content};
-    if(sha)body.sha=sha;
-    const resp=await fetch(`https://api.github.com/repos/${ghConfig.repo}/contents/data.json`,{
-      method:'PUT',
-      headers:{'Authorization':'Bearer '+ghConfig.token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},
-      body:JSON.stringify(body)
-    });
-    if(resp.ok){
-      toast('✅ 同步成功！GitHub Actions将每10分钟自动检查推送');
-    }else{
+      if(resp.ok){
+        toast('✅ 同步成功！GitHub Actions将自动检查推送');
+        return;
+      }
       const err=await resp.json();
+      // SHA不匹配则重试
+      if(err.message&&err.message.includes('does not match')&&attempt<3){
+        toast('SHA冲突，正在重试('+attempt+'/3)...');
+        await new Promise(r=>setTimeout(r,1000));
+        continue;
+      }
       toast('❌ 同步失败: '+(err.message||resp.status));
+      return;
     }
   }catch(e){
     toast('❌ 同步失败: '+e.message);
