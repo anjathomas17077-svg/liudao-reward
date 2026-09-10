@@ -1,11 +1,9 @@
 name: 领奖提醒检查
 
 on:
-  schedule:
-    - cron: '*/10 * * * *'  # 每10分钟运行一次
   push:
     paths:
-      - 'data.json'  # data.json变更时立即触发
+      - 'data.json'  # data.json变更时触发（补充Cloudflare Worker定时检查）
   workflow_dispatch:  # 支持手动触发
 
 jobs:
