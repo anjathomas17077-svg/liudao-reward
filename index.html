@@ -712,11 +712,11 @@ async function syncToGitHub(){
     const content=btoa(unescape(encodeURIComponent(JSON.stringify(syncData,null,2))));
     // 最多重试5次（处理SHA不匹配）
     for(let attempt=1;attempt<=5;attempt++){
-      // 获取当前文件SHA
+      // 获取当前文件SHA（加随机参数绕过CDN缓存）
       let sha=null;
       try{
-        const checkResp=await fetch(`https://api.github.com/repos/${ghConfig.repo}/contents/data.json`,{
-          headers:{'Authorization':'Bearer '+ghConfig.token,'Accept':'application/vnd.github.v3+json'}
+        const checkResp=await fetch(`https://api.github.com/repos/${ghConfig.repo}/contents/data.json?_t=${Date.now()}`,{
+          headers:{'Authorization':'Bearer '+ghConfig.token,'Accept':'application/vnd.github.v3+json','Cache-Control':'no-cache'}
         });
         if(checkResp.ok){const checkData=await checkResp.json();sha=checkData.sha}
       }catch(e){}
@@ -736,7 +736,7 @@ async function syncToGitHub(){
       // SHA不匹配则重试
       if(err.message&&err.message.includes('does not match')&&attempt<5){
         toast('SHA冲突重试中('+attempt+'/5)...');
-        await new Promise(r=>setTimeout(r,2000));
+        await new Promise(r=>setTimeout(r,3000));
         continue;
       }
       toast('❌ 同步失败: '+(err.message||resp.status));
