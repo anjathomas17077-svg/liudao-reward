@@ -11,9 +11,11 @@
  */
 
 export default {
-  // Cron定时触发
+  // Cron定时触发（Cloudflare Cron，备用）
   async scheduled(event, env, ctx) {
-    await checkAndNotify(env);
+    console.log('[Cron] 定时检查触发，时间:', new Date().toISOString());
+    const result = await checkAndNotify(env);
+    console.log('[Cron] 检查结果:', JSON.stringify(result));
   },
 
   // HTTP手动触发（用于测试）

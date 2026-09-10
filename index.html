@@ -710,38 +710,40 @@ async function syncToGitHub(){
     const syncData=JSON.parse(JSON.stringify(data));
     for(const g of syncData.groups)for(const a of g.accounts){delete a._notified}
     const content=btoa(unescape(encodeURIComponent(JSON.stringify(syncData,null,2))));
-    // 最多重试5次（处理SHA不匹配）
-    for(let attempt=1;attempt<=5;attempt++){
-      // 获取当前文件SHA（加随机参数绕过CDN缓存）
-      let sha=null;
-      try{
-        const checkResp=await fetch(`https://api.github.com/repos/${ghConfig.repo}/contents/data.json?_t=${Date.now()}`,{
-          headers:{'Authorization':'Bearer '+ghConfig.token,'Accept':'application/vnd.github.v3+json','Cache-Control':'no-cache'}
-        });
-        if(checkResp.ok){const checkData=await checkResp.json();sha=checkData.sha}
-      }catch(e){}
-      // 上传/更新文件
-      const body={message:'🔄 同步账号数据 '+new Date().toLocaleString('zh-CN'),content:content};
-      if(sha)body.sha=sha;
-      const resp=await fetch(`https://api.github.com/repos/${ghConfig.repo}/contents/data.json`,{
-        method:'PUT',
-        headers:{'Authorization':'Bearer '+ghConfig.token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},
-        body:JSON.stringify(body)
-      });
-      if(resp.ok){
+    // 使用GraphQL Mutation直接创建commit，完全不需要SHA！
+    // 比Contents API更可靠，不会有SHA冲突问题
+    const resp=await fetch('https://api.github.com/graphql',{
+      method:'POST',
+      headers:{'Authorization':'Bearer '+ghConfig.token,'Content-Type':'application/json'},
+      body:JSON.stringify({
+        query:`mutation($branch:RefInput!,$msg:String!,$additions:[FileAddition!]!){
+          createCommitOnBranch(input:{
+            branch:$branch,
+            message:{headline:$msg},
+            fileChanges:{additions:$additions}
+          }){
+            commit{oid}
+          }
+        }`,
+        variables:{
+          branch:{repositoryNameWithOwner:ghConfig.repo,branchName:"main"},
+          msg:'🔄 同步账号数据 '+new Date().toLocaleString('zh-CN'),
+          additions:[{path:"data.json",contents:content}]
+        }
+      })
+    });
+    if(resp.ok){
+      const result=await resp.json();
+      if(result.data&&result.data.createCommitOnBranch&&result.data.createCommitOnBranch.commit){
         toast('✅ 同步成功！');
         return;
       }
-      const err=await resp.json();
-      // SHA不匹配则重试
-      if(err.message&&err.message.includes('does not match')&&attempt<5){
-        toast('SHA冲突重试中('+attempt+'/5)...');
-        await new Promise(r=>setTimeout(r,3000));
-        continue;
+      if(result.errors){
+        toast('❌ 同步失败: '+result.errors.map(e=>e.message).join(', '));
+        return;
       }
-      toast('❌ 同步失败: '+(err.message||resp.status));
-      return;
     }
+    toast('❌ 同步失败: HTTP '+resp.status);
   }catch(e){
     toast('❌ 同步失败: '+e.message);
   }
@@ -813,13 +815,24 @@ setInterval(render,1000);
 
 /* ===== INIT ===== */
 loadData();loadWxPusherConfig();loadGithubConfig();render();requestNotification();
-// SW版本检测：强制更新旧PWA缓存
+// SW注册 + 强制更新机制
 if('serviceWorker'in navigator){
-  navigator.serviceWorker.register('sw.js').then(reg=>{
-    reg.addEventListener('updatefound',()=>{location.reload()});
-    // 每30秒检查一次SW更新
+  navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).then(reg=>{
+    // 检测到新SW立即刷新
+    reg.addEventListener('updatefound',()=>{
+      const newSW=reg.installing;
+      newSW.addEventListener('statechange',()=>{
+        if(newSW.state==='activated')location.reload();
+      });
+    });
+    // 立即检查一次更新，然后每30秒检查
+    reg.update();
     setInterval(()=>reg.update(),30000);
   }).catch(()=>{});
+  // 如果当前SW控制了页面，但页面版本不匹配，强制刷新
+  if(navigator.serviceWorker.controller){
+    navigator.serviceWorker.addEventListener('controllerchange',()=>location.reload());
+  }
 }
 </script>
 </body>

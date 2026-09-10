@@ -2,9 +2,9 @@ name = "liudao-reward-check"
 main = "worker.js"
 compatibility_date = "2024-01-01"
 
-# Cron Triggers - 每10分钟准时运行
+# Cron Triggers - 每10分钟准时运行（使用明确分钟数，避免 */n 语法兼容问题）
 [triggers]
-crons = ["*/10 * * * *"]
+crons = ["0,10,20,30,40,50 * * * *"]
 
 # 环境变量（敏感信息用 wrangler secret put 设置）
 # wrangler secret put WXPUSHER_SPT
