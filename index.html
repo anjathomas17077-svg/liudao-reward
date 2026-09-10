@@ -710,40 +710,71 @@ async function syncToGitHub(){
     const syncData=JSON.parse(JSON.stringify(data));
     for(const g of syncData.groups)for(const a of g.accounts){delete a._notified}
     const content=btoa(unescape(encodeURIComponent(JSON.stringify(syncData,null,2))));
-    // 使用GraphQL Mutation直接创建commit，完全不需要SHA！
-    // 比Contents API更可靠，不会有SHA冲突问题
-    const resp=await fetch('https://api.github.com/graphql',{
-      method:'POST',
-      headers:{'Authorization':'Bearer '+ghConfig.token,'Content-Type':'application/json'},
-      body:JSON.stringify({
-        query:`mutation($branch:RefInput!,$msg:String!,$additions:[FileAddition!]!){
-          createCommitOnBranch(input:{
-            branch:$branch,
-            message:{headline:$msg},
-            fileChanges:{additions:$additions}
-          }){
-            commit{oid}
-          }
-        }`,
-        variables:{
-          branch:{repositoryNameWithOwner:ghConfig.repo,branchName:"main"},
-          msg:'🔄 同步账号数据 '+new Date().toLocaleString('zh-CN'),
-          additions:[{path:"data.json",contents:content}]
-        }
-      })
+    const [owner,repo]=ghConfig.repo.split('/');
+    const gqlHeaders={'Authorization':'Bearer '+ghConfig.token,'Content-Type':'application/json'};
+    // 第1步：用GraphQL查询获取HEAD commit OID（POST请求，不被CDN缓存）
+    let headOid=null;
+    const queryResp=await fetch('https://api.github.com/graphql',{
+      method:'POST',headers:gqlHeaders,
+      body:JSON.stringify({query:`query{repository(owner:"${owner}",name:"${repo}"){ref(qualifiedName:"refs/heads/main"){target{... on Commit{oid}}}}}`})
     });
-    if(resp.ok){
-      const result=await resp.json();
-      if(result.data&&result.data.createCommitOnBranch&&result.data.createCommitOnBranch.commit){
-        toast('✅ 同步成功！');
-        return;
-      }
-      if(result.errors){
-        toast('❌ 同步失败: '+result.errors.map(e=>e.message).join(', '));
-        return;
+    if(queryResp.ok){
+      const qd=await queryResp.json();
+      if(qd.data&&qd.data.repository&&qd.data.repository.ref&&qd.data.repository.ref.target){
+        headOid=qd.data.repository.ref.target.oid;
       }
     }
-    toast('❌ 同步失败: HTTP '+resp.status);
+    if(!headOid){toast('❌ 同步失败: 无法获取仓库HEAD');return;}
+    // 第2步：用GraphQL Mutation创建commit（POST请求，不被CDN缓存，不需要文件SHA）
+    const mutResp=await fetch('https://api.github.com/graphql',{
+      method:'POST',headers:gqlHeaders,
+      body:JSON.stringify({
+        query:`mutation($input:CreateCommitOnBranchInput!){createCommitOnBranch(input:$input){commit{oid}}}`,
+        variables:{input:{
+          branch:{repositoryNameWithOwner:ghConfig.repo,branchName:"main"},
+          message:{headline:'🔄 同步账号数据 '+new Date().toLocaleString('zh-CN')},
+          fileChanges:{additions:[{path:"data.json",contents:content}]},
+          expectedHeadOid:headOid
+        }}
+      })
+    });
+    if(mutResp.ok){
+      const md=await mutResp.json();
+      if(md.data&&md.data.createCommitOnBranch&&md.data.createCommitOnBranch.commit){
+        toast('✅ 同步成功！');return;
+      }
+      if(md.errors){
+        const errMsg=md.errors.map(e=>e.message).join(', ');
+        // HEAD冲突说明有新提交，自动重试一次
+        if(errMsg.includes('expectedHeadOid')||errMsg.includes('Head')){
+          toast('仓库有新提交，重试中...');
+          await new Promise(r=>setTimeout(r,2000));
+          // 重新获取HEAD OID
+          const q2=await fetch('https://api.github.com/graphql',{
+            method:'POST',headers:gqlHeaders,
+            body:JSON.stringify({query:`query{repository(owner:"${owner}",name:"${repo}"){ref(qualifiedName:"refs/heads/main"){target{... on Commit{oid}}}}}`})
+          });
+          if(q2.ok){const qd2=await q2.json();if(qd2.data&&qd2.data.repository&&qd2.data.repository.ref)headOid=qd2.data.repository.ref.target.oid;}
+          if(headOid){
+            const m2=await fetch('https://api.github.com/graphql',{
+              method:'POST',headers:gqlHeaders,
+              body:JSON.stringify({
+                query:`mutation($input:CreateCommitOnBranchInput!){createCommitOnBranch(input:$input){commit{oid}}}`,
+                variables:{input:{
+                  branch:{repositoryNameWithOwner:ghConfig.repo,branchName:"main"},
+                  message:{headline:'🔄 同步账号数据 '+new Date().toLocaleString('zh-CN')},
+                  fileChanges:{additions:[{path:"data.json",contents:content}]},
+                  expectedHeadOid:headOid
+                }}
+              })
+            });
+            if(m2.ok){const md2=await m2.json();if(md2.data&&md2.data.createCommitOnBranch){toast('✅ 同步成功！');return;}}
+          }
+        }
+        toast('❌ 同步失败: '+errMsg);return;
+      }
+    }
+    toast('❌ 同步失败: HTTP '+mutResp.status);
   }catch(e){
     toast('❌ 同步失败: '+e.message);
   }
