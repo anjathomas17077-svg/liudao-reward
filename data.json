@@ -61,7 +61,7 @@
           "dailySilver": 157,
           "timerHours": 24,
           "note": "",
-          "lastClaimTime": 1789026291105,
+          "lastClaimTime": 1789112855450,
           "lastOnlineTime": 1789031788739
         }
       ]
@@ -755,36 +755,6 @@
       "name": "第13组",
       "accounts": [
         {
-          "id": "a_1787912319138_c2hh",
-          "phone": "16275849212",
-          "ninja": "未设置",
-          "star3": 0,
-          "star4": 0,
-          "star5": 0,
-          "fragments": 0,
-          "faction": "fire",
-          "dailySilver": 0,
-          "timerHours": 24,
-          "note": "",
-          "lastClaimTime": null,
-          "lastOnlineTime": 1788449309488
-        },
-        {
-          "id": "a_1787912319138_cnim",
-          "phone": "16261661317",
-          "ninja": "未设置",
-          "star3": 0,
-          "star4": 0,
-          "star5": 0,
-          "fragments": 0,
-          "faction": "fire",
-          "dailySilver": 0,
-          "timerHours": 24,
-          "note": "",
-          "lastClaimTime": null,
-          "lastOnlineTime": 1788449309488
-        },
-        {
           "id": "a_1787912319138_fmls",
           "phone": "16275849291",
           "ninja": "未设置",
@@ -813,6 +783,36 @@
           "note": "",
           "lastClaimTime": null,
           "lastOnlineTime": 1788449309488
+        },
+        {
+          "id": "a_1787912319138_c2hh",
+          "phone": "16275849212",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "water",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": null,
+          "lastOnlineTime": 1789093519920
+        },
+        {
+          "id": "a_1787912319138_cnim",
+          "phone": "16261661317",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 0,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "water",
+          "dailySilver": 0,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": null,
+          "lastOnlineTime": 1789099556150
         }
       ]
     },
@@ -828,12 +828,12 @@
           "star4": 0,
           "star5": 0,
           "fragments": 0,
-          "faction": "fire",
+          "faction": "earth",
           "dailySilver": 0,
           "timerHours": 24,
           "note": "",
           "lastClaimTime": null,
-          "lastOnlineTime": 1788356024307
+          "lastOnlineTime": 1789097119770
         },
         {
           "id": "a_1787928709362_smlr",
@@ -843,12 +843,12 @@
           "star4": 0,
           "star5": 0,
           "fragments": 0,
-          "faction": "fire",
+          "faction": "wind",
           "dailySilver": 0,
           "timerHours": 24,
           "note": "",
           "lastClaimTime": null,
-          "lastOnlineTime": 1788356024307
+          "lastOnlineTime": 1789097119770
         },
         {
           "id": "a_1787928709362_ziqd",
@@ -858,12 +858,12 @@
           "star4": 0,
           "star5": 0,
           "fragments": 0,
-          "faction": "fire",
+          "faction": "earth",
           "dailySilver": 0,
           "timerHours": 24,
           "note": "",
           "lastClaimTime": null,
-          "lastOnlineTime": 1788356024307
+          "lastOnlineTime": 1789097119770
         },
         {
           "id": "a_1787928709362_c2ok",
@@ -873,12 +873,12 @@
           "star4": 0,
           "star5": 0,
           "fragments": 0,
-          "faction": "fire",
+          "faction": "water",
           "dailySilver": 0,
           "timerHours": 24,
           "note": "",
           "lastClaimTime": null,
-          "lastOnlineTime": 1788356024307
+          "lastOnlineTime": 1789097119770
         }
       ]
     },
@@ -894,12 +894,12 @@
           "star4": 0,
           "star5": 0,
           "fragments": 0,
-          "faction": "fire",
+          "faction": "earth",
           "dailySilver": 0,
           "timerHours": 24,
           "note": "",
           "lastClaimTime": null,
-          "lastOnlineTime": 1788356819749
+          "lastOnlineTime": 1789101153890
         },
         {
           "id": "a_1787937447083_ay5w",
@@ -909,12 +909,12 @@
           "star4": 0,
           "star5": 0,
           "fragments": 0,
-          "faction": "fire",
+          "faction": "earth",
           "dailySilver": 0,
           "timerHours": 24,
           "note": "",
           "lastClaimTime": null,
-          "lastOnlineTime": 1788356819749
+          "lastOnlineTime": 1789101153890
         },
         {
           "id": "a_1787937447083_388x",
@@ -924,12 +924,12 @@
           "star4": 0,
           "star5": 0,
           "fragments": 0,
-          "faction": "fire",
+          "faction": "water",
           "dailySilver": 0,
           "timerHours": 24,
           "note": "",
           "lastClaimTime": null,
-          "lastOnlineTime": 1788356819749
+          "lastOnlineTime": 1789101153890
         },
         {
           "id": "a_1787947571288_jg8h",
@@ -939,12 +939,12 @@
           "star4": 0,
           "star5": 0,
           "fragments": 0,
-          "faction": "fire",
+          "faction": "water",
           "dailySilver": 0,
           "timerHours": 24,
           "note": "",
           "lastClaimTime": null,
-          "lastOnlineTime": 1788356819749
+          "lastOnlineTime": 1789101153890
         }
       ]
     },
@@ -965,7 +965,7 @@
           "timerHours": 24,
           "note": "",
           "lastClaimTime": null,
-          "lastOnlineTime": 1788358001834
+          "lastOnlineTime": 1789112405894
         },
         {
           "id": "a_1787947396832_m1oj",
@@ -980,7 +980,7 @@
           "timerHours": 24,
           "note": "",
           "lastClaimTime": null,
-          "lastOnlineTime": 1788358001834
+          "lastOnlineTime": 1789112405894
         },
         {
           "id": "a_1787947396832_i143",
@@ -995,7 +995,7 @@
           "timerHours": 24,
           "note": "",
           "lastClaimTime": null,
-          "lastOnlineTime": 1788358001834
+          "lastOnlineTime": 1789112405894
         },
         {
           "id": "a_1787947594007_3erc",
@@ -1010,7 +1010,7 @@
           "timerHours": 24,
           "note": "",
           "lastClaimTime": null,
-          "lastOnlineTime": 1788358001834
+          "lastOnlineTime": 1789112405894
         }
       ]
     },
@@ -1220,6 +1220,12 @@
   ],
   "currentGroup": 0,
   "history": [
+    {
+      "phone": "16684764178",
+      "ninja": "未设置",
+      "silver": 157,
+      "time": 1789112855451
+    },
     {
       "phone": "17119520580",
       "ninja": "未设置",
