@@ -83,7 +83,7 @@
           "timerHours": 24,
           "note": "",
           "lastClaimTime": 1789205761571,
-          "lastOnlineTime": 1789117551631
+          "lastOnlineTime": 1789212211064
         },
         {
           "id": "a_1789031852568_sslo",
@@ -212,7 +212,7 @@
           "dailySilver": 157,
           "timerHours": 24,
           "note": "",
-          "lastClaimTime": 1789125370987,
+          "lastClaimTime": 1789212413751,
           "lastOnlineTime": 1789135547620
         },
         {
@@ -227,7 +227,7 @@
           "dailySilver": 157,
           "timerHours": 24,
           "note": "",
-          "lastClaimTime": 1789125454080,
+          "lastClaimTime": 1789212567504,
           "lastOnlineTime": 1789135547620
         }
       ]
@@ -276,7 +276,7 @@
           "dailySilver": 157,
           "timerHours": 24,
           "note": "",
-          "lastClaimTime": 1789125795281,
+          "lastClaimTime": 1789212696171,
           "lastOnlineTime": 1789032455493
         },
         {
@@ -575,7 +575,7 @@
           "timerHours": 24,
           "note": "",
           "lastClaimTime": null,
-          "lastOnlineTime": 1789055430845
+          "lastOnlineTime": 1789210524175
         },
         {
           "id": "a_1787825264757_1y8g",
@@ -590,7 +590,7 @@
           "timerHours": 24,
           "note": "",
           "lastClaimTime": null,
-          "lastOnlineTime": 1789055430845
+          "lastOnlineTime": 1789210524175
         },
         {
           "id": "a_1787825269644_elqr",
@@ -605,7 +605,7 @@
           "timerHours": 24,
           "note": "",
           "lastClaimTime": null,
-          "lastOnlineTime": 1789055430845
+          "lastOnlineTime": 1789210524175
         },
         {
           "id": "a_1787825279893_6k2g",
@@ -620,7 +620,7 @@
           "timerHours": 24,
           "note": "",
           "lastClaimTime": null,
-          "lastOnlineTime": 1789055430845
+          "lastOnlineTime": 1789210524175
         }
       ]
     },
@@ -641,7 +641,7 @@
           "timerHours": 24,
           "note": "",
           "lastClaimTime": null,
-          "lastOnlineTime": 1789023991157
+          "lastOnlineTime": 1789212034680
         },
         {
           "id": "a_1787834676413_gwxb",
@@ -656,7 +656,7 @@
           "timerHours": 24,
           "note": "",
           "lastClaimTime": null,
-          "lastOnlineTime": 1789023991157
+          "lastOnlineTime": 1789212034680
         },
         {
           "id": "a_1787834676413_luyo",
@@ -671,7 +671,7 @@
           "timerHours": 24,
           "note": "",
           "lastClaimTime": null,
-          "lastOnlineTime": 1789023991157
+          "lastOnlineTime": 1789212034680
         },
         {
           "id": "a_1787834676413_ze2h",
@@ -686,7 +686,7 @@
           "timerHours": 24,
           "note": "一个金装备",
           "lastClaimTime": null,
-          "lastOnlineTime": 1789023991157
+          "lastOnlineTime": 1789212034680
         }
       ]
     },
@@ -1224,8 +1224,26 @@
       "accounts": []
     }
   ],
-  "currentGroup": 5,
+  "currentGroup": 4,
   "history": [
+    {
+      "phone": "16284232791",
+      "ninja": "未设置",
+      "silver": 157,
+      "time": 1789212696171
+    },
+    {
+      "phone": "17193417519",
+      "ninja": "未设置",
+      "silver": 157,
+      "time": 1789212567504
+    },
+    {
+      "phone": "16275848920",
+      "ninja": "未设置",
+      "silver": 157,
+      "time": 1789212413751
+    },
     {
       "phone": "17009152638",
       "ninja": "未设置",
