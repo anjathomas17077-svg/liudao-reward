@@ -449,22 +449,7 @@
           "timerHours": 24,
           "note": "无流派",
           "lastClaimTime": null,
-          "lastOnlineTime": 1789200386452
-        },
-        {
-          "id": "a_1787819474371_0yjs",
-          "phone": "16289609716",
-          "ninja": "未设置",
-          "star3": 0,
-          "star4": 0,
-          "star5": 0,
-          "fragments": 0,
-          "faction": "earth",
-          "dailySilver": 0,
-          "timerHours": 24,
-          "note": "",
-          "lastClaimTime": null,
-          "lastOnlineTime": 1789200388162
+          "lastOnlineTime": 1789310233276
         },
         {
           "id": "a_1787754311769_fsoe",
@@ -479,7 +464,7 @@
           "timerHours": 24,
           "note": "",
           "lastClaimTime": 1789248591119,
-          "lastOnlineTime": 1789161694101
+          "lastOnlineTime": 1789310233276
         },
         {
           "id": "a_1787754323950_bejb",
@@ -494,7 +479,22 @@
           "timerHours": 24,
           "note": "",
           "lastClaimTime": 1789250827801,
-          "lastOnlineTime": 1789163284865
+          "lastOnlineTime": 1789310233276
+        },
+        {
+          "id": "a_1787819474371_0yjs",
+          "phone": "16289609716",
+          "ninja": "未设置",
+          "star3": 0,
+          "star4": 1,
+          "star5": 0,
+          "fragments": 0,
+          "faction": "earth",
+          "dailySilver": 157,
+          "timerHours": 24,
+          "note": "",
+          "lastClaimTime": 1789310232194,
+          "lastOnlineTime": 1789310233276
         }
       ]
     },
@@ -1230,8 +1230,14 @@
       "accounts": []
     }
   ],
-  "currentGroup": 4,
+  "currentGroup": 7,
   "history": [
+    {
+      "phone": "16289609716",
+      "ninja": "未设置",
+      "silver": 157,
+      "time": 1789310232194
+    },
     {
       "phone": "16291293578",
       "ninja": "未设置",
