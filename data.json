@@ -83,7 +83,7 @@
           "timerHours": 24,
           "note": "",
           "lastClaimTime": 1789292756905,
-          "lastOnlineTime": 1789212211064
+          "lastOnlineTime": 1789296487468
         },
         {
           "id": "a_1789031852568_sslo",
@@ -148,7 +148,7 @@
           "dailySilver": 157,
           "timerHours": 24,
           "note": "",
-          "lastClaimTime": 1789210233924,
+          "lastClaimTime": 1789297272254,
           "lastOnlineTime": 1789289946345
         },
         {
@@ -316,7 +316,7 @@
           "dailySilver": 157,
           "timerHours": 24,
           "note": "",
-          "lastClaimTime": 1789210392489,
+          "lastClaimTime": 1789297471156,
           "lastOnlineTime": 1789153013250
         },
         {
@@ -1228,8 +1228,20 @@
       "accounts": []
     }
   ],
-  "currentGroup": 8,
+  "currentGroup": 5,
   "history": [
+    {
+      "phone": "17009152638",
+      "ninja": "未设置",
+      "silver": 157,
+      "time": 1789297471156
+    },
+    {
+      "phone": "17106653693",
+      "ninja": "未设置",
+      "silver": 157,
+      "time": 1789297272254
+    },
     {
       "phone": "16261660594",
       "ninja": "未设置",
