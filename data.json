@@ -184,7 +184,7 @@
           "dailySilver": 157,
           "timerHours": 24,
           "note": "",
-          "lastClaimTime": 1789377041231,
+          "lastClaimTime": 1789463936319,
           "lastOnlineTime": 1789458491913
         },
         {
@@ -1230,8 +1230,14 @@
       "accounts": []
     }
   ],
-  "currentGroup": 0,
+  "currentGroup": 3,
   "history": [
+    {
+      "phone": "17026000045",
+      "ninja": "未设置",
+      "silver": 157,
+      "time": 1789463936319
+    },
     {
       "phone": "16684764178",
       "ninja": "未设置",
