@@ -199,7 +199,7 @@
           "dailySilver": 157,
           "timerHours": 24,
           "note": "",
-          "lastClaimTime": 1789387358088,
+          "lastClaimTime": 1789473898577,
           "lastOnlineTime": 1789458491913
         },
         {
@@ -214,7 +214,7 @@
           "dailySilver": 157,
           "timerHours": 24,
           "note": "",
-          "lastClaimTime": 1789387357289,
+          "lastClaimTime": 1789474010786,
           "lastOnlineTime": 1789458491913
         },
         {
@@ -250,7 +250,7 @@
           "dailySilver": 157,
           "timerHours": 24,
           "note": "",
-          "lastClaimTime": 1789387355632,
+          "lastClaimTime": 1789474104843,
           "lastOnlineTime": 1789460204090
         },
         {
@@ -1230,8 +1230,26 @@
       "accounts": []
     }
   ],
-  "currentGroup": 5,
+  "currentGroup": 4,
   "history": [
+    {
+      "phone": "16284232791",
+      "ninja": "未设置",
+      "silver": 157,
+      "time": 1789474104843
+    },
+    {
+      "phone": "17193417519",
+      "ninja": "未设置",
+      "silver": 157,
+      "time": 1789474010786
+    },
+    {
+      "phone": "16275848920",
+      "ninja": "未设置",
+      "silver": 157,
+      "time": 1789473898577
+    },
     {
       "phone": "17009152638",
       "ninja": "未设置",
