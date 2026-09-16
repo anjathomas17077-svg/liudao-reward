@@ -377,7 +377,7 @@ function openAddModal(){
   ['fPhone','fNinja','fNote'].forEach(id=>document.getElementById(id).value='');
   ['fStar3','fStar4','fStar5','fFrag','fSilver'].forEach(id=>document.getElementById(id).value='0');
   document.getElementById('fTimer').value='24';document.getElementById('fFaction').value='fire';
-  populateGroupSelect();document.getElementById('fGroup').value=data.currentGroup;
+  populateGroupSelect();document.getElementById('fGroup').value=curZone().currentGroup;
   document.getElementById('modalOverlay').classList.add('active');
 }
 function openEditModal(acc,gi){
