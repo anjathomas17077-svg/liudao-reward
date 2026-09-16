@@ -43,7 +43,9 @@ async function checkAndNotify(env) {
     return { error: '获取数据异常', message: e.message };
   }
 
-  if (!data.groups || !data.groups.length) {
+  // 兼容新旧数据格式
+  const zones = data.zones || [{ id: 'legacy', name: '1区', groups: data.groups || [], history: data.history || [] }];
+  if (!zones.length || !zones.some(z => z.groups && z.groups.length)) {
     return { message: '无账号数据', claimable: 0 };
   }
 
@@ -59,12 +61,14 @@ async function checkAndNotify(env) {
 
   const claimable = [];
   let totalAccounts = 0;
-  for (const g of data.groups) {
-    for (const a of g.accounts) {
-      totalAccounts++;
-      const st = getStatus(a);
-      if (st === 'claim' || st === 'over') {
-        claimable.push({ ...a, status: st, groupName: g.name });
+  for (const z of zones) {
+    for (const g of (z.groups || [])) {
+      for (const a of g.accounts) {
+        totalAccounts++;
+        const st = getStatus(a);
+        if (st === 'claim' || st === 'over') {
+          claimable.push({ ...a, status: st, groupName: g.name, zoneName: z.name });
+        }
       }
     }
   }
@@ -85,7 +89,7 @@ async function checkAndNotify(env) {
   msg += '以下账号可领取银锭：\n\n';
   claimable.forEach((a, i) => {
     const prefix = a.status === 'over' ? '⚠️过期' : '✅可领';
-    msg += `${i + 1}. ${prefix} ${a.phone} ${a.ninja}\n`;
+    msg += `${i + 1}. ${prefix} [${a.zoneName}] ${a.phone} ${a.ninja}\n`;
     if (a.dailySilver) msg += `   🪙${a.dailySilver}银锭/日\n`;
   });
   msg += `\n⏰ 共${claimable.length}个账号待领取`;

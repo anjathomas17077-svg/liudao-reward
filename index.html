@@ -39,6 +39,8 @@ select.tool-select{padding:6px 8px;border:1px solid rgba(255,255,255,.15);border
 .group-nav button:disabled{opacity:.3;cursor:not-allowed}
 .group-title{font-size:15px;font-weight:700;min-width:100px;text-align:center}
 .group-title span{color:var(--text2);font-size:11px;font-weight:400}
+.zone-title{font-size:16px;font-weight:700;min-width:100px;text-align:center;color:#ffc107}
+.zone-title span{color:var(--text2);font-size:11px;font-weight:400}
 .group-manage{display:flex;justify-content:center;gap:6px;padding:2px 12px 6px}
 .group-dots{display:flex;justify-content:center;flex-wrap:wrap;gap:3px;padding:2px 12px 6px;max-width:600px;margin:0 auto}
 .group-dot{width:8px;height:8px;border-radius:50%;cursor:pointer;transition:all .2s;border:1px solid rgba(255,255,255,.2)}
@@ -160,6 +162,16 @@ select.tool-select{padding:6px 8px;border:1px solid rgba(255,255,255,.15);border
   <span>可领取: <b id="statClaim" style="color:var(--green)">0</b></span>
   <span>今日上线: <b id="statOnline" style="color:#4fc3f7">0</b></span>
   <span>总银锭/日: <b id="statSilver" style="color:#ffc107">0</b></span>
+</div>
+<div class="group-nav" id="zoneNav">
+  <button onclick="prevZone()" id="btnPrevZone">◀</button>
+  <div class="zone-title" id="zoneTitle">1区 <span>(1/1)</span></div>
+  <button onclick="nextZone()" id="btnNextZone">▶</button>
+</div>
+<div class="group-manage" style="padding-top:2px;padding-bottom:2px">
+  <button class="btn btn-secondary btn-sm" onclick="renameZone()">重命名区</button>
+  <button class="btn btn-secondary btn-sm" onclick="addZone()">+新区</button>
+  <button class="btn btn-secondary btn-sm" onclick="deleteZone()">删除区</button>
 </div>
 <div class="group-nav" id="groupNav">
   <button onclick="prevGroup()" id="btnPrev">◀</button>
@@ -300,7 +312,7 @@ select.tool-select{padding:6px 8px;border:1px solid rgba(255,255,255,.15);border
 <input type="file" id="fileInput" accept=".json" style="display:none" onchange="handleImport(event)">
 <script>
 /* ===== DATA ===== */
-let data={groups:[],currentGroup:0,history:[]};
+let data={zones:[],currentZone:0};
 const STORAGE_KEY='liudao_data';
 const FACTION_MAP={water:'💧水',fire:'🔥火',wind:'🌪风',earth:'🏔土'};
 const FACTION_CN={水:'water',火:'fire',风:'wind',土:'earth'};
@@ -308,9 +320,18 @@ let soundOn=true;
 let editId=null;
 
 function getTimerMs(acc){return (acc.timerHours||24)*3600000}
+function zId(){return 'z_'+Date.now()+'_'+Math.random().toString(36).slice(2,6)}
+function curZone(){return data.zones[data.currentZone]}
 function loadData(){
-  try{const s=localStorage.getItem(STORAGE_KEY);if(s){data=JSON.parse(s);if(!data.history)data.history=[]}}catch(e){}
-  if(!data.groups||!data.groups.length){data={groups:[{id:gId(),name:'第1组',accounts:[]}],currentGroup:0,history:[]}}
+  try{const s=localStorage.getItem(STORAGE_KEY);if(s){const parsed=JSON.parse(s);
+    // 迁移旧数据格式（无zones）到新区格式
+    if(parsed.groups&&!parsed.zones){
+      data={zones:[{id:zId(),name:'1区',groups:parsed.groups,currentGroup:parsed.currentGroup||0,history:parsed.history||[]}],currentZone:0};
+    }else if(parsed.zones){data=parsed;}
+  }}catch(e){}
+  if(!data.zones||!data.zones.length){data={zones:[{id:zId(),name:'1区',groups:[{id:gId(),name:'第1组',accounts:[]}],currentGroup:0,history:[]}],currentZone:0}}
+  // 确保每个zone都有history
+  for(const z of data.zones){if(!z.history)z.history=[];if(!z.groups||!z.groups.length){z.groups=[{id:gId(),name:'第1组',accounts:[]}];z.currentGroup=0;}}
   const ss=localStorage.getItem('liudao_sound');if(ss!==null)soundOn=ss==='true';
   saveData();updateSoundBtn();
 }
@@ -335,12 +356,19 @@ function vibrate(){if(soundOn&&navigator.vibrate)navigator.vibrate([200,100,200]
 function toggleSound(){soundOn=!soundOn;localStorage.setItem('liudao_sound',soundOn);updateSoundBtn();toast(soundOn?'提醒已开启':'提醒已关闭')}
 function updateSoundBtn(){const b=document.getElementById('soundBtn');b.textContent=soundOn?'🔔':'🔕';b.classList.toggle('on',soundOn)}
 
+/* ===== ZONE NAV ===== */
+function prevZone(){if(data.currentZone>0){data.currentZone--;saveData();render()}}
+function nextZone(){if(data.currentZone<data.zones.length-1){data.currentZone++;saveData();render()}}
+function addZone(){const n=data.zones.length+1;data.zones.push({id:zId(),name:n+'区',groups:[{id:gId(),name:'第1组',accounts:[]}],currentGroup:0,history:[]});data.currentZone=data.zones.length-1;saveData();render();toast('已添加'+n+'区')}
+function deleteZone(){if(data.zones.length<=1){toast('至少保留一个区');return}const z=curZone();if(!confirm('确定删除 "'+z.name+'" 及其所有数据？'))return;data.zones.splice(data.currentZone,1);if(data.currentZone>=data.zones.length)data.currentZone=data.zones.length-1;saveData();render()}
+function renameZone(){const name=prompt('输入新区名:',curZone().name);if(name&&name.trim()){curZone().name=name.trim();saveData();render()}}
+
 /* ===== GROUP NAV ===== */
-function curGroup(){return data.groups[data.currentGroup]}
-function prevGroup(){if(data.currentGroup>0){data.currentGroup--;saveData();render()}}
-function nextGroup(){if(data.currentGroup<data.groups.length-1){data.currentGroup++;saveData();render()}}
-function addGroup(){const n=data.groups.length+1;data.groups.push({id:gId(),name:'第'+n+'组',accounts:[]});data.currentGroup=data.groups.length-1;saveData();render();toast('已添加新组')}
-function deleteGroup(){if(data.groups.length<=1){toast('至少保留一个组');return}if(!confirm('确定删除 "'+curGroup().name+'" 及其所有账号？'))return;data.groups.splice(data.currentGroup,1);if(data.currentGroup>=data.groups.length)data.currentGroup=data.groups.length-1;saveData();render()}
+function curGroup(){return curZone().groups[curZone().currentGroup]}
+function prevGroup(){if(curZone().currentGroup>0){curZone().currentGroup--;saveData();render()}}
+function nextGroup(){if(curZone().currentGroup<curZone().groups.length-1){curZone().currentGroup++;saveData();render()}}
+function addGroup(){const n=curZone().groups.length+1;curZone().groups.push({id:gId(),name:'第'+n+'组',accounts:[]});curZone().currentGroup=curZone().groups.length-1;saveData();render();toast('已添加新组')}
+function deleteGroup(){if(curZone().groups.length<=1){toast('至少保留一个组');return}if(!confirm('确定删除 "'+curGroup().name+'" 及其所有账号？'))return;curZone().groups.splice(curZone().currentGroup,1);if(curZone().currentGroup>=curZone().groups.length)curZone().currentGroup=curZone().groups.length-1;saveData();render()}
 function renameGroup(){const name=prompt('输入新组名:',curGroup().name);if(name&&name.trim()){curGroup().name=name.trim();saveData();render()}}
 
 /* ===== ACCOUNT CRUD ===== */
@@ -364,12 +392,12 @@ function openEditModal(acc,gi){
 }
 function populateGroupSelect(){
   const sel=document.getElementById('fGroup');
-  sel.innerHTML=data.groups.map((g,i)=>`<option value="${i}">${g.name}${!editId&&g.accounts.length>=4?' (已满)':''}</option>`).join('');
+  sel.innerHTML=curZone().groups.map((g,i)=>`<option value="${i}">${g.name}${!editId&&g.accounts.length>=4?' (已满)':''}</option>`).join('');
 }
 function closeModal(){document.getElementById('modalOverlay').classList.remove('active');editId=null}
 function isPhoneDuplicate(phone,excludeId){
   if(!phone||phone==='未命名')return false;
-  for(const g of data.groups)for(const a of g.accounts){if(a.id!==excludeId&&a.phone===phone)return a}
+  for(const g of curZone().groups)for(const a of g.accounts){if(a.id!==excludeId&&a.phone===phone)return a}
   return false;
 }
 function saveAccount(){
@@ -378,7 +406,7 @@ function saveAccount(){
   const dup=isPhoneDuplicate(phone,editId);
   if(dup){toast(`手机号重复: ${dup.phone} (${dup.ninja})`);return}
   const gi=parseInt(document.getElementById('fGroup').value);
-  if(!editId&&data.groups[gi].accounts.length>=4){toast('该组已满(最多4个)');return}
+  if(!editId&&curZone().groups[gi].accounts.length>=4){toast('该组已满(最多4个)');return}
   const acc={
     id:editId||aId(),phone:phone||'未命名',ninja:ninja||'未设置',
     star3:parseInt(document.getElementById('fStar3').value)||0,star4:parseInt(document.getElementById('fStar4').value)||0,star5:parseInt(document.getElementById('fStar5').value)||0,
@@ -387,17 +415,17 @@ function saveAccount(){
     note:document.getElementById('fNote').value.trim(),lastClaimTime:null
   };
   if(editId){
-    const srcGroup=data.groups.find(g=>g.accounts.some(a=>a.id===editId));
-    if(srcGroup&&srcGroup!==data.groups[gi]&&data.groups[gi].accounts.length>=4){toast('目标组已满');return}
-    for(const g of data.groups){const idx=g.accounts.findIndex(a=>a.id===editId);if(idx!==-1){acc.lastClaimTime=g.accounts[idx].lastClaimTime;g.accounts.splice(idx,1);break}}
-    data.groups[gi].accounts.push(acc);toast('已更新');
-  }else{data.groups[gi].accounts.push(acc);toast('已添加')}
+    const srcGroup=curZone().groups.find(g=>g.accounts.some(a=>a.id===editId));
+    if(srcGroup&&srcGroup!==curZone().groups[gi]&&curZone().groups[gi].accounts.length>=4){toast('目标组已满');return}
+    for(const g of curZone().groups){const idx=g.accounts.findIndex(a=>a.id===editId);if(idx!==-1){acc.lastClaimTime=g.accounts[idx].lastClaimTime;g.accounts.splice(idx,1);break}}
+    curZone().groups[gi].accounts.push(acc);toast('已更新');
+  }else{curZone().groups[gi].accounts.push(acc);toast('已添加')}
   saveData();closeModal();render();
 }
-function deleteAccount(accId){if(!confirm('确定删除此账号？'))return;for(const g of data.groups){const idx=g.accounts.findIndex(a=>a.id===accId);if(idx!==-1){g.accounts.splice(idx,1);break}}saveData();render()}
+function deleteAccount(accId){if(!confirm('确定删除此账号？'))return;for(const g of curZone().groups){const idx=g.accounts.findIndex(a=>a.id===accId);if(idx!==-1){g.accounts.splice(idx,1);break}}saveData();render()}
 function copyPhone(phone){navigator.clipboard.writeText(phone).then(()=>toast('已复制: '+phone)).catch(()=>toast('复制失败'))}
 function markOnline(accId){
-  for(const g of data.groups){const acc=g.accounts.find(a=>a.id===accId);if(acc){acc.lastOnlineTime=Date.now();break}}
+  for(const z of data.zones)for(const g of z.groups){const acc=g.accounts.find(a=>a.id===accId);if(acc){acc.lastOnlineTime=Date.now();break}}
   saveData();render();toast('已记录上线时间');
 }
 function onlineAll(){
@@ -406,10 +434,10 @@ function onlineAll(){
   saveData();render();toast(`已标记 ${count} 个账号上线`);
 }
 function claimReward(accId){
-  for(const g of data.groups){const acc=g.accounts.find(a=>a.id===accId);if(acc){
+  for(const z of data.zones)for(const g of z.groups){const acc=g.accounts.find(a=>a.id===accId);if(acc){
     acc.lastClaimTime=Date.now();
-    data.history.unshift({phone:acc.phone,ninja:acc.ninja,silver:acc.dailySilver,time:Date.now()});
-    if(data.history.length>500)data.history=data.history.slice(0,500);
+    z.history.unshift({phone:acc.phone,ninja:acc.ninja,silver:acc.dailySilver,time:Date.now()});
+    if(z.history.length>500)z.history=z.history.slice(0,500);
     break}}
   saveData();render();playSound();vibrate();
 }
@@ -417,9 +445,9 @@ function claimAll(){
   const g=curGroup();const now=Date.now();let count=0;
   for(const acc of g.accounts){const st=getStatus(acc);if(!acc.lastClaimTime||st==='claim'||st==='over'){
     acc.lastClaimTime=now;count++;
-    data.history.unshift({phone:acc.phone,ninja:acc.ninja,silver:acc.dailySilver,time:now});
+    curZone().history.unshift({phone:acc.phone,ninja:acc.ninja,silver:acc.dailySilver,time:now});
   }}
-  if(data.history.length>500)data.history=data.history.slice(0,500);
+  if(curZone().history.length>500)curZone().history=curZone().history.slice(0,500);
   saveData();render();if(count){toast(`已标记 ${count} 个账号领取`);playSound();vibrate()}else toast('本组没有可领取的账号');
 }
 
@@ -427,18 +455,18 @@ function claimAll(){
 function openBatchModal(){
   document.getElementById('batchText').value='';
   const sel=document.getElementById('batchGroup');
-  sel.innerHTML=data.groups.map((g,i)=>`<option value="${i}">${g.name}${g.accounts.length>=4?' (已满)':''}</option>`).join('');
-  sel.value=data.currentGroup;
+  sel.innerHTML=curZone().groups.map((g,i)=>`<option value="${i}">${g.name}${g.accounts.length>=4?' (已满)':''}</option>`).join('');
+  sel.value=curZone().currentGroup;
   document.getElementById('batchOverlay').classList.add('active');
 }
 function closeBatchModal(){document.getElementById('batchOverlay').classList.remove('active')}
 function batchAdd(){
   const text=document.getElementById('batchText').value.trim();if(!text){toast('请输入账号数据');return}
   const gi=parseInt(document.getElementById('batchGroup').value);
-  if(data.groups[gi].accounts.length>=4){toast('该组已满');return}
+  if(curZone().groups[gi].accounts.length>=4){toast('该组已满');return}
   const lines=text.split('\n').filter(l=>l.trim());let added=0,skipped=0;
   for(const line of lines){
-    if(data.groups[gi].accounts.length>=4)break;
+    if(curZone().groups[gi].accounts.length>=4)break;
     const parts=line.split(/[,，\t]/).map(s=>s.trim());
     const phone=parts[0]||'';
     if(phone&&isPhoneDuplicate(phone,null)){skipped++;continue}
@@ -446,7 +474,7 @@ function batchAdd(){
       star3:0,star4:0,star5:0,fragments:0,
       faction:FACTION_CN[parts[2]]||'fire',dailySilver:parseInt(parts[3])||0,
       timerHours:24,note:parts[4]||'',lastClaimTime:null};
-    data.groups[gi].accounts.push(acc);added++;
+    curZone().groups[gi].accounts.push(acc);added++;
   }
   saveData();closeBatchModal();render();
   if(skipped)toast(`已添加 ${added} 个，跳过 ${skipped} 个重复`);
@@ -456,28 +484,29 @@ function batchAdd(){
 /* ===== HISTORY ===== */
 function openHistoryModal(){
   const c=document.getElementById('historyContent');
-  if(!data.history.length){c.innerHTML='<p style="color:var(--text2);text-align:center;padding:20px">暂无领取记录</p>'}
-  else{c.innerHTML='<div class="history-list">'+data.history.map(h=>
+  const hist=curZone().history;
+  if(!hist.length){c.innerHTML='<p style="color:var(--text2);text-align:center;padding:20px">暂无领取记录</p>'}
+  else{c.innerHTML='<div class="history-list">'+hist.map(h=>
     `<div class="history-item"><span>${h.phone} ${h.ninja}</span><span style="color:#ffc107">+${h.silver}🪙</span><span style="color:var(--text2)">${new Date(h.time).toLocaleString('zh-CN',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'})}</span></div>`
   ).join('')+'</div>'}
   document.getElementById('historyOverlay').classList.add('active');
 }
 function closeHistoryModal(){document.getElementById('historyOverlay').classList.remove('active')}
-function clearHistory(){if(!confirm('清空所有领取记录？'))return;data.history=[];saveData();openHistoryModal();toast('记录已清空')}
+function clearHistory(){if(!confirm('清空当前区的领取记录？'))return;curZone().history=[];saveData();openHistoryModal();toast('记录已清空')}
 
 /* ===== STATS ===== */
 function toggleStats(){document.getElementById('statsPanel').classList.toggle('open');renderStats()}
 function renderStats(){
   let total=0,claimable=0,overdue=0,silver=0,claimed=0,onlineToday=0,newCount=0;
   const factionCount={water:0,fire:0,wind:0,earth:0};
-  for(const g of data.groups)for(const a of g.accounts){
+  for(const g of curZone().groups)for(const a of g.accounts){
     total++;silver+=a.dailySilver||0;factionCount[a.faction]=(factionCount[a.faction]||0)+1;
     const st=getStatus(a);if(st==='claim')claimable++;if(st==='over')overdue++;if(st==='new')newCount++;
     if(a.lastOnlineTime&&new Date(a.lastOnlineTime).toDateString()===new Date().toDateString())onlineToday++;
   }
   const today=new Date();today.setHours(0,0,0,0);
-  claimed=data.history.filter(h=>h.time>=today.getTime()).length;
-  const todaySilver=data.history.filter(h=>h.time>=today.getTime()).reduce((s,h)=>s+(h.silver||0),0);
+  claimed=curZone().history.filter(h=>h.time>=today.getTime()).length;
+  const todaySilver=curZone().history.filter(h=>h.time>=today.getTime()).reduce((s,h)=>s+(h.silver||0),0);
   document.getElementById('statsGrid').innerHTML=`
     <div class="stat-item"><div class="stat-val">${total}</div><div class="stat-label">总账号</div></div>
     <div class="stat-item"><div class="stat-val" style="color:var(--green)">${claimable}</div><div class="stat-label">可领取</div></div>
@@ -513,10 +542,18 @@ function getRemain(acc){if(!acc.lastClaimTime)return 0;return Math.max(0,getTime
 
 /* ===== RENDER ===== */
 function render(){
-  const g=curGroup();
-  document.getElementById('groupTitle').innerHTML=`${g.name} <span>(${data.currentGroup+1}/${data.groups.length})</span>`;
-  document.getElementById('btnPrev').disabled=data.currentGroup===0;
-  document.getElementById('btnNext').disabled=data.currentGroup===data.groups.length-1;
+  const z=curZone();const g=curGroup();
+  // 区导航
+  const zoneNav=document.getElementById('zoneNav');
+  if(zoneNav){
+    zoneNav.innerHTML=`<button onclick="prevZone()" id="btnPrevZone" ${data.currentZone===0?'disabled':''}>◀</button>
+      <div class="zone-title" id="zoneTitle">${z.name} <span>(${data.currentZone+1}/${data.zones.length})</span></div>
+      <button onclick="nextZone()" id="btnNextZone" ${data.currentZone===data.zones.length-1?'disabled':''}>▶</button>`;
+  }
+  // 组导航
+  document.getElementById('groupTitle').innerHTML=`${g.name} <span>(${z.currentGroup+1}/${z.groups.length})</span>`;
+  document.getElementById('btnPrev').disabled=z.currentGroup===0;
+  document.getElementById('btnNext').disabled=z.currentGroup===z.groups.length-1;
   const search=document.getElementById('searchInput').value.trim().toLowerCase();
   const sort=document.getElementById('sortSelect').value;
   let accs=[...g.accounts.map((a,i)=>({...a,_idx:i}))];
@@ -532,15 +569,15 @@ function render(){
       const a=accs[i];const st=getStatus(a);const timer=formatTimer(a);
       const canClaim=st==='claim'||st==='over'||st==='new';
       const btnText=st==='new'?'✓ 首次领取':st==='over'?'⚠ 立即领取':canClaim?'✓ 已领取':'倒计时中';
-      const gi=a._idx!==undefined?data.currentGroup:data.groups.findIndex(g=>g.accounts.some(x=>x.id===a.id));
-      const idx=a._idx!==undefined?a._idx:data.groups[gi]?.accounts.findIndex(x=>x.id===a.id)||0;
+      const gi=a._idx!==undefined?z.currentGroup:z.groups.findIndex(gr=>gr.accounts.some(x=>x.id===a.id));
+      const idx=a._idx!==undefined?a._idx:z.groups[gi]?.accounts.findIndex(x=>x.id===a.id)||0;
       const isOnlineToday=a.lastOnlineTime&&new Date(a.lastOnlineTime).toDateString()===new Date().toDateString();
       const onlineText=isOnlineToday?'🟢 已上线 '+new Date(a.lastOnlineTime).toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit'}):'⚪ 未上线';
       html+=`<div class="account-card status-${st}">
         <div class="card-header">
           <span class="card-phone" onclick="copyPhone('${a.phone}')">${a.phone}</span>
           <div class="card-actions">
-            <button onclick="openEditModal(data.groups[${gi}].accounts[${idx}],${gi})">✏</button>
+            <button onclick="openEditModal(curZone().groups[${gi}].accounts[${idx}],${gi})">✏</button>
             <button onclick="deleteAccount('${a.id}')">✕</button>
           </div>
         </div>
@@ -558,15 +595,15 @@ function render(){
   grid.innerHTML=html;
   // dots
   const dots=document.getElementById('groupDots');
-  dots.innerHTML=data.groups.map((g,i)=>{
-    let cls='group-dot';if(i===data.currentGroup)cls+=' active';
-    const hasClaim=g.accounts.some(a=>getStatus(a)==='claim');const hasOver=g.accounts.some(a=>getStatus(a)==='over');const hasNew=g.accounts.some(a=>getStatus(a)==='new');
-    if(hasOver)cls+=' has-over';else if(hasNew)cls+=' has-new';else if(hasClaim)cls+=' has-claim';else if(g.accounts.length>0)cls+=' all-wait';else cls+=' empty';
-    return `<div class="${cls}" onclick="data.currentGroup=${i};saveData();render()" title="${g.name}"></div>`;
+  dots.innerHTML=z.groups.map((gr,i)=>{
+    let cls='group-dot';if(i===z.currentGroup)cls+=' active';
+    const hasClaim=gr.accounts.some(a=>getStatus(a)==='claim');const hasOver=gr.accounts.some(a=>getStatus(a)==='over');const hasNew=gr.accounts.some(a=>getStatus(a)==='new');
+    if(hasOver)cls+=' has-over';else if(hasNew)cls+=' has-new';else if(hasClaim)cls+=' has-claim';else if(gr.accounts.length>0)cls+=' all-wait';else cls+=' empty';
+    return `<div class="${cls}" onclick="curZone().currentGroup=${i};saveData();render()" title="${gr.name}"></div>`;
   }).join('');
   // stats bar
   let total=0,claimable=0,silver=0,onlineToday=0;
-  for(const gr of data.groups)for(const a of gr.accounts){total++;silver+=a.dailySilver||0;const st=getStatus(a);if(st==='claim'||st==='over')claimable++;if(a.lastOnlineTime&&new Date(a.lastOnlineTime).toDateString()===new Date().toDateString())onlineToday++}
+  for(const gr of z.groups)for(const a of gr.accounts){total++;silver+=a.dailySilver||0;const st=getStatus(a);if(st==='claim'||st==='over')claimable++;if(a.lastOnlineTime&&new Date(a.lastOnlineTime).toDateString()===new Date().toDateString())onlineToday++}
   document.getElementById('statTotal').textContent=total;document.getElementById('statClaim').textContent=claimable;document.getElementById('statOnline').textContent=onlineToday;document.getElementById('statSilver').textContent=silver;
   // check notifications
   checkNotifications();
@@ -583,8 +620,13 @@ function importData(){document.getElementById('fileInput').click()}
 function handleImport(e){
   const file=e.target.files[0];if(!file)return;const reader=new FileReader();
   reader.onload=function(ev){try{const imported=JSON.parse(ev.target.result);
-    if(!imported.groups||!Array.isArray(imported.groups)){toast('文件格式错误');return}
-    data=imported;if(!data.history)data.history=[];data.currentGroup=0;saveData();render();toast('导入成功');
+    // 兼容旧格式
+    if(imported.groups&&!imported.zones){
+      data={zones:[{id:zId(),name:'1区',groups:imported.groups,currentGroup:imported.currentGroup||0,history:imported.history||[]}],currentZone:0};
+    }else if(imported.zones){data=imported;}
+    else{toast('文件格式错误');return;}
+    if(!data.zones||!data.zones.length){toast('文件格式错误');return;}
+    data.currentZone=0;saveData();render();toast('导入成功');
   }catch(err){toast('导入失败')}};reader.readAsText(file);e.target.value='';
 }
 
@@ -708,7 +750,7 @@ async function syncToGitHub(){
   try{
     // 准备数据（去掉内部标记）
     const syncData=JSON.parse(JSON.stringify(data));
-    for(const g of syncData.groups)for(const a of g.accounts){delete a._notified}
+    for(const z of syncData.zones)for(const g of z.groups)for(const a of g.accounts){delete a._notified}
     const content=btoa(unescape(encodeURIComponent(JSON.stringify(syncData,null,2))));
     const [owner,repo]=ghConfig.repo.split('/');
     const gqlHeaders={'Authorization':'Bearer '+ghConfig.token,'Content-Type':'application/json'};
@@ -785,7 +827,7 @@ function requestNotification(){if('Notification'in window&&Notification.permissi
 function checkNotifications(){
   if(!soundOn)return;
   let wxClaimable=[]; // 收集需要微信推送的账号
-  for(const g of data.groups)for(const a of g.accounts){
+  for(const z of data.zones)for(const g of z.groups)for(const a of g.accounts){
     const st=getStatus(a);
     if((st==='claim'||st==='over')&&!a._notified){
       a._notified=true;playSound();vibrate();
