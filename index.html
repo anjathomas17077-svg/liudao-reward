@@ -132,7 +132,7 @@ select.tool-select{padding:6px 8px;border:1px solid rgba(255,255,255,.15);border
 <body>
 <div class="header">
   <div class="header-top">
-    <h1>六道轮回·领奖助手</h1>
+    <h1>六道轮回·领奖助手 <small style="font-size:10px;color:var(--text2);-webkit-text-fill-color:var(--text2)">v2.3</small></h1>
     <div class="header-actions">
       <button class="btn btn-secondary btn-sm" onclick="exportData()">导出</button>
       <button class="btn btn-secondary btn-sm" onclick="importData()">导入</button>
@@ -401,11 +401,13 @@ function isPhoneDuplicate(phone,excludeId){
   return false;
 }
 function saveAccount(){
+  try{
   const phone=document.getElementById('fPhone').value.trim();const ninja=document.getElementById('fNinja').value.trim();
   if(!phone&&!ninja){toast('请填写手机号或忍者名');return}
   const dup=isPhoneDuplicate(phone,editId);
-  if(dup){toast(`手机号重复: ${dup.phone} (${dup.ninja})`);return}
+  if(dup){toast('手机号重复: '+dup.phone+' ('+dup.ninja+')');return}
   const gi=parseInt(document.getElementById('fGroup').value);
+  if(isNaN(gi)||!curZone().groups[gi]){toast('分组选择错误');return}
   if(!editId&&curZone().groups[gi].accounts.length>=4){toast('该组已满(最多4个)');return}
   const acc={
     id:editId||aId(),phone:phone||'未命名',ninja:ninja||'未设置',
@@ -421,6 +423,7 @@ function saveAccount(){
     curZone().groups[gi].accounts.push(acc);toast('已更新');
   }else{curZone().groups[gi].accounts.push(acc);toast('已添加')}
   saveData();closeModal();render();
+  }catch(e){toast('保存失败: '+e.message);console.error('saveAccount error:',e)}
 }
 function deleteAccount(accId){if(!confirm('确定删除此账号？'))return;for(const g of curZone().groups){const idx=g.accounts.findIndex(a=>a.id===accId);if(idx!==-1){g.accounts.splice(idx,1);break}}saveData();render()}
 function copyPhone(phone){navigator.clipboard.writeText(phone).then(()=>toast('已复制: '+phone)).catch(()=>toast('复制失败'))}
@@ -461,8 +464,10 @@ function openBatchModal(){
 }
 function closeBatchModal(){document.getElementById('batchOverlay').classList.remove('active')}
 function batchAdd(){
+  try{
   const text=document.getElementById('batchText').value.trim();if(!text){toast('请输入账号数据');return}
   const gi=parseInt(document.getElementById('batchGroup').value);
+  if(isNaN(gi)||!curZone().groups[gi]){toast('分组选择错误');return}
   if(curZone().groups[gi].accounts.length>=4){toast('该组已满');return}
   const lines=text.split('\n').filter(l=>l.trim());let added=0,skipped=0;
   for(const line of lines){
@@ -477,8 +482,9 @@ function batchAdd(){
     curZone().groups[gi].accounts.push(acc);added++;
   }
   saveData();closeBatchModal();render();
-  if(skipped)toast(`已添加 ${added} 个，跳过 ${skipped} 个重复`);
-  else toast(`已添加 ${added} 个账号`);
+  if(skipped)toast('已添加 '+added+' 个，跳过 '+skipped+' 个重复');
+  else toast('已添加 '+added+' 个账号');
+  }catch(e){toast('批量添加失败: '+e.message);console.error('batchAdd error:',e)}
 }
 
 /* ===== HISTORY ===== */
