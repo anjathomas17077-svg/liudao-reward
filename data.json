@@ -86,7 +86,7 @@
               "dailySilver": 0,
               "timerHours": 24,
               "note": "",
-              "lastClaimTime": 1789554635192,
+              "lastClaimTime": 1789641399859,
               "lastOnlineTime": 1789296487468
             },
             {
@@ -101,7 +101,7 @@
               "dailySilver": 0,
               "timerHours": 24,
               "note": "",
-              "lastClaimTime": 1789554636007,
+              "lastClaimTime": 1789641400081,
               "lastOnlineTime": 1789245909823
             }
           ]
@@ -269,7 +269,7 @@
               "dailySilver": 157,
               "timerHours": 24,
               "note": "",
-              "lastClaimTime": 1789554960351,
+              "lastClaimTime": 1789641516973,
               "lastOnlineTime": 1789634176856
             },
             {
@@ -585,7 +585,7 @@
               "timerHours": 24,
               "note": "",
               "lastClaimTime": 1789580441436,
-              "lastOnlineTime": 1789549392084
+              "lastOnlineTime": 1789640803987
             },
             {
               "id": "a_1787825269644_elqr",
@@ -600,7 +600,7 @@
               "timerHours": 24,
               "note": "",
               "lastClaimTime": 1789580441436,
-              "lastOnlineTime": 1789549392084
+              "lastOnlineTime": 1789640803987
             },
             {
               "id": "a_1787825279893_6k2g",
@@ -615,7 +615,7 @@
               "timerHours": 24,
               "note": "",
               "lastClaimTime": 1789580441436,
-              "lastOnlineTime": 1789549392084
+              "lastOnlineTime": 1789640803987
             },
             {
               "id": "a_1787825260666_w88g",
@@ -630,7 +630,7 @@
               "timerHours": 24,
               "note": "",
               "lastClaimTime": 1789580441436,
-              "lastOnlineTime": 1789549392084
+              "lastOnlineTime": 1789640803987
             }
           ]
         },
@@ -1234,8 +1234,26 @@
           "accounts": []
         }
       ],
-      "currentGroup": 9,
+      "currentGroup": 4,
       "history": [
+        {
+          "phone": "16266208519",
+          "ninja": "未设置",
+          "silver": 157,
+          "time": 1789641516973
+        },
+        {
+          "phone": "13275802863",
+          "ninja": "未设置",
+          "silver": 0,
+          "time": 1789641400081
+        },
+        {
+          "phone": "13467132769",
+          "ninja": "未设置",
+          "silver": 0,
+          "time": 1789641399862
+        },
         {
           "phone": "17026782197",
           "ninja": "未设置",
@@ -4217,24 +4235,6 @@
           "ninja": "未设置",
           "silver": 0,
           "time": 1787804062994
-        },
-        {
-          "phone": "16290220443",
-          "ninja": "未设置",
-          "silver": 0,
-          "time": 1787804062994
-        },
-        {
-          "phone": "17009152638",
-          "ninja": "未设置",
-          "silver": 0,
-          "time": 1787804062994
-        },
-        {
-          "phone": "16284232791",
-          "ninja": "未设置",
-          "silver": 0,
-          "time": 1787802613345
         }
       ]
     },
