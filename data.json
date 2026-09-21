@@ -4258,13 +4258,19 @@
               "dailySilver": 0,
               "timerHours": 24,
               "note": "",
-              "lastClaimTime": 1789896158511
+              "lastClaimTime": 1789984372172
             }
           ]
         }
       ],
       "currentGroup": 0,
       "history": [
+        {
+          "phone": "13467132769",
+          "ninja": "未设置",
+          "silver": 0,
+          "time": 1789984372173
+        },
         {
           "phone": "13467132769",
           "ninja": "未设置",
@@ -4304,5 +4310,5 @@
       ]
     }
   ],
-  "currentZone": 0
+  "currentZone": 1
 }
