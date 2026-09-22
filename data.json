@@ -21,7 +21,7 @@
               "timerHours": 24,
               "note": "",
               "lastClaimTime": 1790045367095,
-              "lastOnlineTime": 1789960302023
+              "lastOnlineTime": 1790069520777
             },
             {
               "id": "a_1787599916297_a692",
@@ -35,8 +35,8 @@
               "dailySilver": 157,
               "timerHours": 24,
               "note": "",
-              "lastClaimTime": 1789981802808,
-              "lastOnlineTime": 1789960302023
+              "lastClaimTime": 1790069519723,
+              "lastOnlineTime": 1790069520777
             },
             {
               "id": "a_1787599828494_w3c2",
@@ -50,8 +50,8 @@
               "dailySilver": 157,
               "timerHours": 24,
               "note": "",
-              "lastClaimTime": 1789981802808,
-              "lastOnlineTime": 1789960302023
+              "lastClaimTime": 1790069519723,
+              "lastOnlineTime": 1790069520777
             },
             {
               "id": "a_1787599705096_fh2a",
@@ -65,8 +65,8 @@
               "dailySilver": 157,
               "timerHours": 24,
               "note": "",
-              "lastClaimTime": 1789983854128,
-              "lastOnlineTime": 1789960302023
+              "lastClaimTime": 1790070475559,
+              "lastOnlineTime": 1790069520777
             }
           ]
         },
@@ -122,8 +122,8 @@
               "dailySilver": 157,
               "timerHours": 24,
               "note": "",
-              "lastClaimTime": 1789983851273,
-              "lastOnlineTime": 1790044436088
+              "lastClaimTime": 1790070717024,
+              "lastOnlineTime": 1790070716273
             },
             {
               "id": "a_1787678793470_u9p0",
@@ -137,8 +137,8 @@
               "dailySilver": 157,
               "timerHours": 24,
               "note": "",
-              "lastClaimTime": 1789983852091,
-              "lastOnlineTime": 1790044436088
+              "lastClaimTime": 1790070717024,
+              "lastOnlineTime": 1790070716273
             },
             {
               "id": "a_1787678798410_pw2t",
@@ -153,7 +153,7 @@
               "timerHours": 24,
               "note": "",
               "lastClaimTime": 1789997663187,
-              "lastOnlineTime": 1790044436088
+              "lastOnlineTime": 1790070716273
             },
             {
               "id": "a_1787678814812_4ofz",
@@ -168,7 +168,7 @@
               "timerHours": 24,
               "note": "",
               "lastClaimTime": 1790002725916,
-              "lastOnlineTime": 1790044436088
+              "lastOnlineTime": 1790070716273
             }
           ]
         },
@@ -519,7 +519,7 @@
               "timerHours": 24,
               "note": "",
               "lastClaimTime": 1789992553178,
-              "lastOnlineTime": 1789985051587
+              "lastOnlineTime": 1790068887929
             },
             {
               "id": "a_1787759144475_fq32",
@@ -534,7 +534,7 @@
               "timerHours": 24,
               "note": "",
               "lastClaimTime": 1789992553178,
-              "lastOnlineTime": 1789985051587
+              "lastOnlineTime": 1790068887929
             },
             {
               "id": "a_1787759158416_gz3o",
@@ -549,7 +549,7 @@
               "timerHours": 24,
               "note": "",
               "lastClaimTime": 1789992553178,
-              "lastOnlineTime": 1789985051587
+              "lastOnlineTime": 1790068887929
             },
             {
               "id": "a_1787759162677_t77f",
@@ -564,7 +564,7 @@
               "timerHours": 24,
               "note": "",
               "lastClaimTime": 1789992553178,
-              "lastOnlineTime": 1789985051587
+              "lastOnlineTime": 1790068887929
             }
           ]
         },
@@ -1234,8 +1234,38 @@
           "accounts": []
         }
       ],
-      "currentGroup": 7,
+      "currentGroup": 11,
       "history": [
+        {
+          "phone": "17026000504",
+          "ninja": "未设置",
+          "silver": 157,
+          "time": 1790070717024
+        },
+        {
+          "phone": "16275849373",
+          "ninja": "未设置",
+          "silver": 157,
+          "time": 1790070717024
+        },
+        {
+          "phone": "16684764178",
+          "ninja": "未设置",
+          "silver": 157,
+          "time": 1790070475559
+        },
+        {
+          "phone": "16291490490",
+          "ninja": "未设置",
+          "silver": 157,
+          "time": 1790069519723
+        },
+        {
+          "phone": "17119520580",
+          "ninja": "未设置",
+          "silver": 157,
+          "time": 1790069519723
+        },
         {
           "phone": "16294818084",
           "ninja": "未设置",
@@ -4205,36 +4235,6 @@
           "ninja": "未设置",
           "silver": 0,
           "time": 1788277537196
-        },
-        {
-          "phone": "16275849291",
-          "ninja": "未设置",
-          "silver": 0,
-          "time": 1788277537196
-        },
-        {
-          "phone": "16261661317",
-          "ninja": "未设置",
-          "silver": 0,
-          "time": 1788277537196
-        },
-        {
-          "phone": "16275849212",
-          "ninja": "未设置",
-          "silver": 0,
-          "time": 1788277537196
-        },
-        {
-          "phone": "16261660839",
-          "ninja": "未设置",
-          "silver": 0,
-          "time": 1788277092593
-        },
-        {
-          "phone": "17082788409",
-          "ninja": "未设置",
-          "silver": 0,
-          "time": 1788277092593
         }
       ]
     },
@@ -4258,13 +4258,19 @@
               "dailySilver": 0,
               "timerHours": 24,
               "note": "",
-              "lastClaimTime": 1789984372172
+              "lastClaimTime": 1790070830794
             }
           ]
         }
       ],
       "currentGroup": 0,
       "history": [
+        {
+          "phone": "13467132769",
+          "ninja": "未设置",
+          "silver": 0,
+          "time": 1790070830795
+        },
         {
           "phone": "13467132769",
           "ninja": "未设置",
