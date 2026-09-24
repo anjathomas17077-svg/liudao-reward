@@ -284,7 +284,7 @@
               "dailySilver": 157,
               "timerHours": 24,
               "note": "",
-              "lastClaimTime": 1790187131044,
+              "lastClaimTime": 1790275849106,
               "lastOnlineTime": 1790134858508
             },
             {
@@ -299,7 +299,7 @@
               "dailySilver": 157,
               "timerHours": 24,
               "note": "",
-              "lastClaimTime": 1790187232269,
+              "lastClaimTime": 1790275848958,
               "lastOnlineTime": 1790134858508
             }
           ]
@@ -482,7 +482,7 @@
               "dailySilver": 157,
               "timerHours": 24,
               "note": "",
-              "lastClaimTime": 1790187005018,
+              "lastClaimTime": 1790275851877,
               "lastOnlineTime": 1790243260620
             },
             {
@@ -1233,8 +1233,26 @@
           "accounts": []
         }
       ],
-      "currentGroup": 2,
+      "currentGroup": 7,
       "history": [
+        {
+          "phone": "16289609716",
+          "ninja": "未设置",
+          "silver": 157,
+          "time": 1790275851877
+        },
+        {
+          "phone": "16290229097",
+          "ninja": "未设置",
+          "silver": 157,
+          "time": 1790275849106
+        },
+        {
+          "phone": "16291293578",
+          "ninja": "未设置",
+          "silver": 157,
+          "time": 1790275848958
+        },
         {
           "phone": "16291491186",
           "ninja": "未设置",
@@ -4216,24 +4234,6 @@
           "ninja": "未设置",
           "silver": 157,
           "time": 1789314155794
-        },
-        {
-          "phone": "15135493946",
-          "ninja": "未设置",
-          "silver": 557,
-          "time": 1789311892290
-        },
-        {
-          "phone": "16289609716",
-          "ninja": "未设置",
-          "silver": 157,
-          "time": 1789310232194
-        },
-        {
-          "phone": "16291293578",
-          "ninja": "未设置",
-          "silver": 157,
-          "time": 1789307553543
         }
       ]
     },
